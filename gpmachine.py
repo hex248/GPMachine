@@ -13,7 +13,6 @@ buttonHeight = 118.75
 
 mColour = "#36b3ac"
 bColour = "#b52126"
-gColour = "#808080"
 
 def button(value):
     print("Button Pressed:", value)
@@ -65,15 +64,16 @@ canvas.pack()
 
 trigImage = tk.PhotoImage(file ='trig.png')
 trigLabel = tk.Label(root, image = trigImage)
-trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'white', rely = 5)
+trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'white')
 
 
 
-frame = tk.Frame(root, bg='gColour')
+frame = tk.Frame(root, bg='gray')
 frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
+    trigLabelA.plave(relwi)
 
     frame.place_forget()
 
