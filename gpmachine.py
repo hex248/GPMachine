@@ -57,7 +57,7 @@ def home():
 
 def trigonometry():
     from PIL import Image
-    im = Image.open("./Images/Trig_Triangle.JPG")
+    im = Image.open("Images/Trig_Triangle.JPG")
     im.rotate(45).show()
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
