@@ -42,5 +42,6 @@ entry.place(x="250", y="250")
 label = tk.Label(frame, text="Type Below", bg="lightblue")
 label.pack()
 label.place(x="250", y="220")
+#hi
 
 root.mainloop()
