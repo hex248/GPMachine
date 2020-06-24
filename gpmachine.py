@@ -1,15 +1,13 @@
 import tkinter as tk
-import PIL
-from PIL import Image
+
 import os
 
 print(os.getcwd())
 
-
 root = tk.Tk()
 
-canvasWidth = 500
-canvasHeight = 500
+canvasWidth = 1000
+canvasHeight = 1000
 
 buttonWidth = 118.75
 buttonHeight = 118.75
@@ -60,19 +58,20 @@ def home():
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
 
-def trigonometry():
-    print ("hello")
-
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
 canvas.pack()
 
-trigImage = tk.PhotoImage(file = "trig.gif")
+trigImage = tk.PhotoImage(file ='trig.png')
 trigLabel = tk.Label(root, image = trigImage)
-trigLabel.place(x = "0", y = "0", relwidth = "1", relheight = "1")
+trigLabel.place(relwidth=1, relheight = 1, relx = 0.75, anchor="n", rely = -0.25)
 
 
 frame = tk.Frame(root, bg='gray')
-# frame.place(relwidth="1", relheight="1")
+frame.place(relwidth=0.5, relheight=0.5, anchor='n', relx = 0.25)
+
+def trigonometry():
+    print ("hello")
+
 
 if True: #ALL BUTTONS
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
@@ -124,6 +123,7 @@ if True: #ALL BUTTONS
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
     backButton = tk.Button(frame, text="Back", bg="lightblue", font="60", command=lambda: button("back"))
+
 
 
 #end of script
