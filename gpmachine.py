@@ -8,7 +8,6 @@ root = tk.Tk()
 
 canvasWidth = 500
 canvasHeight = 500
-
 buttonWidth = 118.75
 buttonHeight = 118.75
 
