@@ -1,4 +1,5 @@
 import tkinter as tk
+import PIL
 
 root = tk.Tk()
 
@@ -13,17 +14,22 @@ def button(value):
     
     trigonometryButton.place_forget()
     TesttryButton.place_forget()
-
     backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
     if value == "back":
         home()
-
+    if value == "trigonometry":
+        trigonometry()
 def home():
     backButton.place_forget()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     TesttryButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
 
+def trigonometry():
+    from PIL import Image
+    im = Image.open("./Images/Trig_Triangle.JPG")
+    im.thumbnail(size)
+    im.rotate(45).show()
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
 canvas.pack()
