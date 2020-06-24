@@ -42,11 +42,9 @@ entry = tk.Entry(frame, bg="white")
 entry.pack()
 entry.place(x="250", y="250")
 
-# OLIVER'S COMMENT
-
 label = tk.Label(frame, text="Type Below", bg="lightblue")
 label.pack()
 label.place(x="250", y="220")
-#hi
+
 
 root.mainloop()
