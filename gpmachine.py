@@ -15,7 +15,21 @@ mColour = "#36b3ac"
 def button(value):
     print("Button Pressed:", value)
     trigonometryButton.place_forget()
-    TesttryButton.place_forget()
+    button2.place_forget()
+    button3.place_forget()
+    button4.place_forget()
+    button5.place_forget()
+    button6.place_forget()
+    button7.place_forget()
+    button8.place_forget()
+    button9.place_forget()
+    button10.place_forget()
+    button11.place_forget()
+    button12.place_forget()
+    button13.place_forget()
+    button14.place_forget()
+    button15.place_forget()
+    button16.place_forget()
     backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
     if value == "back":
@@ -25,7 +39,21 @@ def button(value):
 def home():
     backButton.place_forget()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
-    TesttryButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
+    button2.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
+    button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
+    button5.place(x="5", y="128.75", width=buttonWidth, height=buttonHeight)
+    button6.place(x="128.75", y="128.75", width=buttonWidth, height=buttonHeight)
+    button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
+    button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
+    button9.place(x="5", y="252.5", width=buttonWidth, height=buttonHeight)
+    button10.place(x="128.75", y="252.5", width=buttonWidth, height=buttonHeight)
+    button11.place(x="252.5", y="252.5", width=buttonWidth, height=buttonHeight)
+    button12.place(x="376.25", y="252.5", width=buttonWidth, height=buttonHeight)
+    button13.place(x="5", y="376.25", width=buttonWidth, height=buttonHeight)
+    button14.place(x="128.75", y="376.25", width=buttonWidth, height=buttonHeight)
+    button15.place(x="252.5", y="376.25", width=buttonWidth, height=buttonHeight)
+    button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
 def trigonometry():
     from PIL import Image
