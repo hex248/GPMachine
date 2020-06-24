@@ -1,24 +1,25 @@
-import tkinter as tk
-
-import os
-
-print(os.getcwd())
-
-root = tk.Tk()
-
-canvasWidth = 500
-canvasHeight = 500
-buttonWidth = 118.75
-buttonHeight = 118.75
-
-mColour = "#36b3ac"
-bColour = "#b52126"
-gColour = "#808080"
+if True: # Imports and global variables
+    import tkinter as tk
+    import os
+    root = tk.Tk()
+    canvasWidth = 500
+    canvasHeight = 500
+    buttonWidth = 118.75
+    buttonHeight = 118.75
+    canvasWidth = 500
+    canvasHeight = 500
+    buttonWidth = 118.75
+    buttonHeight = 118.75
+    mColour = "#36b3ac"
+    bColour = "#b52126"
+    gColour = "#808080"
+    canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
+    canvas.pack()
 
 def button(value):
     print("Button Pressed:", value)
     trigonometryButton.place_forget()
-    button2.place_forget()
+    equationButton.place_forget()
     button3.place_forget()
     button4.place_forget()
     button5.place_forget()
@@ -39,11 +40,16 @@ def button(value):
         home()
     if value == "trigonometry":
         trig()
+    if value == "equation":
+        equations()
+    if value == "thermalenergy":
+        thermalEnergy()
 def home():
     backButton.place_forget()
     hideTrig()
+    hideEquations()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
-    button2.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
+    equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
     button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
     button5.place(x="5", y="128.75", width=buttonWidth, height=buttonHeight)
@@ -59,35 +65,54 @@ def home():
     button15.place(x="252.5", y="376.25", width=buttonWidth, height=buttonHeight)
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
-
-canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
-canvas.pack()
-
-trigImage = tk.PhotoImage(file ='trig.png')
-trigLabel = tk.Label(root, image = trigImage)
-trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'grey')
-
-
-
-frame = tk.Frame(root, bg='grey')
-frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
+if True: # Trigonometry elements
+    trigImage = tk.PhotoImage(file ='trig.png')
+    trigLabel = tk.Label(root, image = trigImage)
+    trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'grey')
+    frame = tk.Frame(root, bg='grey')
+    frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
     trigLabelA.place(y = 100, x = 100)
-
     frame.place_forget()
 
 def hideTrig():
     trigLabel.place_forget()
     frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
+
+if True: # Equations elements
+    equationsTitle = tk.Label(font = ("Arial", "30"), text = "Equations", fg = "black", bg = "grey")
+    physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
+    thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
+    thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
+
+def equations():
+    equationsTitle.place(y = 10, x = 250, anchor = "n")
+    physicsTitle.place(y = 80, x = 125, anchor = "n")
+    thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
+
+def hideEquations():
+    equationsTitle.place_forget()
+    physicsTitle.place_forget()
+    thermalEnergyButton.place_forget()
+    thermalEnergyLabel.place_forget()
+    thermalEnergyEntry.place_forget()
+
+def thermalEnergy():
+    thermalEnergyButton.place_forget()
+    equationsTitle.place_forget()
+    physicsTitle.place_forget()
+    thermalEnergyLabel.place(y = 120, x = 110, anchor = "n")
+    thermalEnergyEntry.place(y = 120, x = 125, anchor = "n")
+
 if True: #ALL BUTTONS
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
-    button2 = tk.Button(frame, text="button2", bg=mColour, font="60", command=lambda: button("button2"))
-    button2.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
+    equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"))
+    equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
 
     button3 = tk.Button(frame, text="button3", bg=mColour, font="60", command=lambda: button("button3"))
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
@@ -133,6 +158,10 @@ if True: #ALL BUTTONS
 
     backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
 
+if True: ### Internal Buttons
+    
+    if True: # Equation Buttons
+        thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: button("thermalenergy"))
 
 
 
