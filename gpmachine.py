@@ -61,13 +61,7 @@ def home():
 
 
 def trigonometry():
-<<<<<<< HEAD
     print ("hello")
-=======
-    from PIL import Image
-    im = Image.open("Images/Trig_Triangle.JPG")
-    im.rotate(45).show()
->>>>>>> 4630423d224a0541a163772252bc244a666d8075
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
 canvas.pack()
