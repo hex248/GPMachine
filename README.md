@@ -1,4 +1,4 @@
-# GPMachine (General Purpose Machine)
+# ![GPicon](/icons/GPicon.png)GPMachine (General Purpose Machine)
 A general pupose program built to fulfill random needs.\
 \
 Built with Python.\
