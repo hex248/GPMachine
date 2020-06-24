@@ -14,6 +14,7 @@ buttonHeight = 118.75
 
 mColour = "#36b3ac"
 bColour = "#b52126"
+gColour = "#808080"
 
 def button(value):
     print("Button Pressed:", value)
@@ -69,7 +70,7 @@ trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'white')
 
 
 
-frame = tk.Frame(root, bg='gray')
+frame = tk.Frame(root, bg='gColour')
 frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
