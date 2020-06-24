@@ -32,5 +32,6 @@ trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
 backButton = tk.Button(frame, text="Back", bg="lightblue", font="60", command=lambda: button("back"))
 
+#end of script
 
 root.mainloop()
