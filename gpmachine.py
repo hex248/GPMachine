@@ -13,7 +13,9 @@ def button(value):
     
     trigonometryButton.place_forget()
     entry.place_forget()
+    entry.pack_forget()
     label.place_forget()
+    label.pack_forget()
     backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
     if value == "back":
