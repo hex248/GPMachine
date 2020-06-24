@@ -20,11 +20,11 @@ def button(value):
     entry.place_forget()
     label.place_forget()
 
-    # backButton = tk.Button(frame, text="Back", bg="lightblue", font="60", command=button("back"))
-    # backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
+    backButton = tk.Button(frame, text="Back", bg="lightblue", font="60", command=lambda: button("back"))
+    backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
-    # if value == "back":
-    #     home()
+    if value == "back":
+        home()
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
 canvas.pack()
