@@ -6,13 +6,14 @@ print(os.getcwd())
 
 root = tk.Tk()
 
-canvasWidth = 1000
-canvasHeight = 1000
+canvasWidth = 500
+canvasHeight = 500
 
 buttonWidth = 118.75
 buttonHeight = 118.75
 
 mColour = "#36b3ac"
+bColour = "#b52126"
 
 def button(value):
     print("Button Pressed:", value)
@@ -32,14 +33,15 @@ def button(value):
     button14.place_forget()
     button15.place_forget()
     button16.place_forget()
-    backButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
+    backButton.place(x="5", y="5")
 
     if value == "back":
         home()
     if value == "trigonometry":
-        trigonometry()
+        trig()
 def home():
     backButton.place_forget()
+    hideTrig()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     button2.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
@@ -63,15 +65,19 @@ canvas.pack()
 
 trigImage = tk.PhotoImage(file ='trig.png')
 trigLabel = tk.Label(root, image = trigImage)
-trigLabel.place(relwidth=1, relheight = 1, relx = 0.75, anchor="n", rely = -0.25)
+
 
 
 frame = tk.Frame(root, bg='gray')
-frame.place(relwidth=0.5, relheight=0.5, anchor='n', relx = 0.25)
+frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
-def trigonometry():
-    print ("hello")
+def trig():
+    trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
+    frame.place_forget()
 
+def hideTrig():
+    trigLabel.place_forget()
+    frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 if True: #ALL BUTTONS
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
@@ -122,10 +128,11 @@ if True: #ALL BUTTONS
     button16 = tk.Button(frame, text="button16", bg=mColour, font="60", command=lambda: button("button16"))
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
-    backButton = tk.Button(frame, text="Back", bg="lightblue", font="60", command=lambda: button("back"))
+    backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
 
 
 
-#end of script
+
+
 
 root.mainloop()
