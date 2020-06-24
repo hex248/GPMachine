@@ -1,6 +1,6 @@
 import tkinter as tk
 import PIL
-
+from PIL import Image
 
 root = tk.Tk()
 
@@ -56,8 +56,7 @@ def home():
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
 def trigonometry():
-    from PIL import Image
-    im = Image.open("./Images/Trig_Triangle.JPG")
+    Image.open("./Images/Trig_Triangle.JPG")
     im.rotate(45).show()
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
