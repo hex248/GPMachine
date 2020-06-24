@@ -72,7 +72,7 @@ trigLabel.place(x = "0", y = "0", relwidth = "1", relheight = "1")
 
 
 frame = tk.Frame(root, bg='gray')
-frame.place(relwidth="1", relheight="1")
+# frame.place(relwidth="1", relheight="1")
 
 if True: #ALL BUTTONS
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
