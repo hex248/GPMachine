@@ -65,6 +65,7 @@ canvas.pack()
 
 trigImage = tk.PhotoImage(file ='trig.png')
 trigLabel = tk.Label(root, image = trigImage)
+trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'white', rely = 5)
 
 
 
@@ -73,6 +74,7 @@ frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
+
     frame.place_forget()
 
 def hideTrig():
