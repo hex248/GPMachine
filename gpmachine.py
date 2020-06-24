@@ -1,6 +1,7 @@
 import tkinter as tk
 import PIL
 
+
 root = tk.Tk()
 
 canvasWidth = 500
@@ -28,7 +29,6 @@ def home():
 def trigonometry():
     from PIL import Image
     im = Image.open("./Images/Trig_Triangle.JPG")
-    im.thumbnail(size)
     im.rotate(45).show()
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
