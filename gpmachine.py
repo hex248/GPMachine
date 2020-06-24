@@ -66,16 +66,16 @@ canvas.pack()
 
 trigImage = tk.PhotoImage(file ='trig.png')
 trigLabel = tk.Label(root, image = trigImage)
-trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'white')
+trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'grey')
 
 
 
-frame = tk.Frame(root, bg='gColour')
+frame = tk.Frame(root, bg='grey')
 frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
-    trigLabelA.plave(relwi)
+    trigLabelA.place(y = 100, x = 100)
 
     frame.place_forget()
 
