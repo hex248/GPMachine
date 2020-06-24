@@ -1,6 +1,10 @@
 import tkinter as tk
 import PIL
 from PIL import Image
+import os
+
+print(os.getcwd())
+
 
 root = tk.Tk()
 
@@ -55,12 +59,17 @@ def home():
     button15.place(x="252.5", y="376.25", width=buttonWidth, height=buttonHeight)
     button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
 
+
 def trigonometry():
-    Image.open("./Images/Trig_Triangle.JPG")
-    im.rotate(45).show()
+    print ("hello")
 
 canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
 canvas.pack()
+
+trigImage = tk.PhotoImage(file = "trig.gif")
+trigLabel = tk.Label(root, image = trigImage)
+trigLabel.place(x = "0", y = "0", relwidth = "1", relheight = "1")
+
 
 frame = tk.Frame(root, bg='gray')
 frame.place(relwidth="1", relheight="1")
