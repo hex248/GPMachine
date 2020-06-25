@@ -100,16 +100,43 @@ def trig():
     frame.place_forget()
 
 def trigCalculate():
-    a = int(trigEntryA.get())
-    b = int(trigEntryB.get())
-    c = int(trigEntryC.get())
-    θ = int(trigEntryθ.get())
-    print(a, type(a)) 
+    a = trigEntryA.get()
+    if a:
+        a = float(a)
+    b = trigEntryB.get()
+    if b:
+        b = float(b)
+    c = trigEntryC.get()
+    if c:
+        c = float(c)
+    θ = trigEntryθ.get()
+    if θ:
+        θ = float(θ)
+    print(a, type(a))
     print(b, type(b))
     print(c, type(c))
     print(θ, type(θ))
     if a and b:
         print(math.hypot(a, b))
+    elif c and b:
+        print(math.sqrt(c ** 2 - b ** 2))
+    elif c and a:
+        print(math.sqrt(c ** 2 - a ** 2))
+    if a and c:
+        print(math.degrees(math.asin(a / c)))
+    elif b and c:
+        print(math.degrees(math.acos(b / c)))
+    elif a and b:
+        print(math.degrees(math.atan(a / b)))
+    if θ and a:
+        print(a / math.tan(math.radians(θ))) # finding adj(b)
+        print(a * math.sin(math.radians(θ))) # finding hyp(c)
+    if θ and b:
+        print(b * math.tan(math.radians(θ))) # finding opp(a)
+        print(b / math.cos(math.radians(θ))) # finding hyp(c)
+    if θ and c:
+        print(c * math.cos(math.radians(θ))) # finding adj(b)
+        print(c * math.sin(math.radians(θ))) # finding opp(a)
 
 def hideTrig():
     trigLabel.place_forget()
