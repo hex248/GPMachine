@@ -98,14 +98,16 @@ def trig():
 def trigCalculate():
     a = int(trigEntryA.get())
     b = int(trigEntryB.get())
-    # c = int(trigEntryC.get())
-    # θ = int(trigEntryθ.get())
+    # c = trigEntryC.get()
+    # θ = trigEntryθ.get()
     print(a, type(a)) 
     print(b, type(b))
     #print(c, type(c))
     #print(θ, type(θ))
     if a and b:
         print(math.hypot(a, b))
+    else:
+        print("value is not an integer")
     
 
 def hideTrig():
