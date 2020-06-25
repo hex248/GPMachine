@@ -118,7 +118,7 @@ def trigCalculate():
     print(θ, type(θ))
     if a and b:
         trigEntryC.delete(0, tk.END)
-        trigEntryC.insert(0, str(math.hypot(a, b))
+        trigEntryC.insert(0, str(math.hypot(a, b)))
     elif c and b:
         trigEntryA.delete(0, tk.END)
         trigEntryA.insert(0, str(math.sqrt(c ** 2 - b ** 2)))
@@ -127,10 +127,10 @@ def trigCalculate():
         trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
     if a and c:
         trigEntryB.delete(0, tk.END)
-        trigEntryB.insert(0, str(math.degrees(math.asin(a / c)))
+        trigEntryB.insert(0, str(math.degrees(math.asin(a / c))))
     elif b and c:
         trigEntryA.delete(0, tk.END)
-        trigEntryA.insert(0, str(math.degrees(math.acos(b / c)))
+        trigEntryA.insert(0, str(math.degrees(math.acos(b / c))))
     elif a and b:
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(math.degrees(math.atan(a / b))))
