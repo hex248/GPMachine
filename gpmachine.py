@@ -222,9 +222,5 @@ if True: ### Internal Buttons
     if True: # Trig Buttons
         trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: button("trigcalculate"))
 
-
-
-
-
-
+#end
 root.mainloop()
