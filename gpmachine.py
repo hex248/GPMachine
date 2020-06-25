@@ -209,7 +209,7 @@ def thermalEnergy():
     thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
     thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
     thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
 
 def thermalEnergyCalculate():
     thermal = thermalEnergyChangeEntry.get()
