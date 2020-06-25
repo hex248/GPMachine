@@ -196,6 +196,9 @@ def hideEquations():
     thermalEnergyMassEntry.place_forget()
     thermalEnergyHeatCapacityLabel.place_forget()
     thermalEnergyHeatCapacityEntry.place_forget()
+    thermalEnergyTemperatureChangeLabel.place_forget()
+    thermalEnergyTemperatureChangeEntry.place_forget()
+    thermalEnergyCalculateButton.place_forget()
 
 def thermalEnergy():
     thermalEnergyButton.place_forget()
@@ -229,9 +232,9 @@ def thermalEnergyCalculate():
     elif thermal and mass and temperatureChange:
         print("specific heat capacity:", thermal / (mass * temperatureChange))
     elif thermal and heatCapacity and temperatureChange:
-        print("specific heat capacity:", thermal / (heatCapacity * temperatureChange))
+        print("mass:", thermal / (heatCapacity * temperatureChange))
     elif mass and heatCapacity and temperatureChange:
-        print("specific heat capacity:", (mass * heatCapacity * temperatureChange))
+        print("thermal energy change:", (mass * heatCapacity * temperatureChange))
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
@@ -294,3 +297,6 @@ if True: ### Internal Buttons
 
 #end
 root.mainloop()
+
+
+
