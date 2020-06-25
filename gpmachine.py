@@ -20,7 +20,7 @@ if True: # Imports and global variables
         float(value)
 
 def button(value):
-    print("Button Pressed:", value)
+    # print("Button Pressed:", value)
     trigonometryButton.place_forget()
     equationButton.place_forget()
     button3.place_forget()
@@ -112,39 +112,39 @@ def trigCalculate():
     θ = trigEntryθ.get()
     if θ:
         θ = float(θ)
-    print(a, type(a))
-    print(b, type(b))
-    print(c, type(c))
-    print(θ, type(θ))
+    # print(a, type(a))
+    # print(b, type(b))
+    # print(c, type(c))
+    # print(θ, type(θ))
     if a and b:
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(math.hypot(a, b)))
-    elif c and b:
+    if c and b:
         trigEntryA.delete(0, tk.END)
         trigEntryA.insert(0, str(math.sqrt(c ** 2 - b ** 2)))
-    elif c and a:
+    if c and a:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
-    elif a and c:
-        trigEntryB.delete(0, tk.END)
-        trigEntryB.insert(0, str(math.degrees(math.asin(a / c))))
-    elif b and c:
-        trigEntryA.delete(0, tk.END)
-        trigEntryA.insert(0, str(math.degrees(math.acos(b / c))))
-    elif a and b:
-        trigEntryC.delete(0, tk.END)
-        trigEntryC.insert(0, str(math.degrees(math.atan(a / b))))
-    elif θ and a:
+    if a and c:
+        trigEntryθ.delete(0, tk.END)
+        trigEntryθ.insert(0, str(math.degrees(math.asin(a / c))))
+    if b and c:
+        trigEntryθ.delete(0, tk.END)
+        trigEntryθ.insert(0, str(math.degrees(math.acos(b / c))))
+    if a and b:
+        trigEntryθ.delete(0, tk.END)
+        trigEntryθ.insert(0, str(math.degrees(math.atan(a / b))))
+    if θ and a:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(a / math.tan(math.radians(θ)))) # finding adj(b)
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(a * math.sin(math.radians(θ)))) # finding hyp(c)
-    elif θ and b:
+    if θ and b:
         trigEntryA.delete(0, tk.END)
         trigEntryA.insert(0, str(b * math.tan(math.radians(θ)))) # finding opp(a)
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(b / math.cos(math.radians(θ)))) # finding hyp(c)
-    elif θ and c:
+    if θ and c:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(c * math.cos(math.radians(θ)))) # finding adj(b)
         trigEntryA.delete(0, tk.END)
