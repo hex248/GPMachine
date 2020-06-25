@@ -125,7 +125,7 @@ def trigCalculate():
     elif c and a:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
-    if a and c:
+    elif a and c:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(math.degrees(math.asin(a / c))))
     elif b and c:
@@ -134,17 +134,17 @@ def trigCalculate():
     elif a and b:
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(math.degrees(math.atan(a / b))))
-    if θ and a:
+    elif θ and a:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(a / math.tan(math.radians(θ)))) # finding adj(b)
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(a * math.sin(math.radians(θ)))) # finding hyp(c)
-    if θ and b:
+    elif θ and b:
         trigEntryA.delete(0, tk.END)
         trigEntryA.insert(0, str(b * math.tan(math.radians(θ)))) # finding opp(a)
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(b / math.cos(math.radians(θ)))) # finding hyp(c)
-    if θ and c:
+    elif θ and c:
         trigEntryB.delete(0, tk.END)
         trigEntryB.insert(0, str(c * math.cos(math.radians(θ)))) # finding adj(b)
         trigEntryA.delete(0, tk.END)
