@@ -16,6 +16,8 @@ if True: # Imports and global variables
     gColour = "#808080"
     canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
     canvas.pack()
+    def fl(value):
+        float(value)
 
 def button(value):
     print("Button Pressed:", value)
@@ -47,6 +49,8 @@ def button(value):
         thermalEnergy()
     if value == "trigcalculate":
         trigCalculate()
+    if value == "thermalenergycalculate":
+        thermalEnergyCalculate()
 def home():
     backButton.place_forget()
     hideTrig()
@@ -107,7 +111,6 @@ def trigCalculate():
     if a and b:
         print(math.hypot(a, b))
 
-    
 def hideTrig():
     trigLabel.place_forget()
     trigLabelA.place_forget()
@@ -133,6 +136,9 @@ if True: # Equations elements
     thermalEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
     thermalEnergyHeatCapacityLabel = tk.Label(font = ("Arial", "13"), text = "Specific heat capacity (J/(K kg)):", fg = "black", bg = "grey")
     thermalEnergyHeatCapacityEntry = tk.Entry(font = ("Arial", "10"))
+    thermalEnergyTemperatureChangeLabel = tk.Label(font = ("Arial", "13"), text = "Temperature change (C):", fg = "black", bg = "grey")
+    thermalEnergyTemperatureChangeEntry = tk.Entry(font = ("Arial", "10"))
+    thermalEnergyCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: button("thermalenergycalculate"))
 
 def equations():
     equationsTitle.place(y = 10, x = 250, anchor = "n")
@@ -162,6 +168,27 @@ def thermalEnergy():
     thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
     thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
     thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
+    thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 45, height = 20)
+
+def thermalEnergyCalculate():
+    thermal = thermalEnergyChangeEntry.get()
+    if thermal:
+        thermal = float(thermal)
+    mass = thermalEnergyMassEntry.get()
+    if mass:
+        mass = float(mass)
+    heatCapacity = thermalEnergyHeatCapacityEntry.get()
+    if heatCapacity:
+        heatCapacity = float(heatCapacity)
+    temperatureChange = thermalEnergyTemperatureChangeEntry.get()
+    if temperatureChange:
+        temperatureChange = float(temperatureChange)
+    print(thermal, type(thermal))
+    print(mass, type(mass))
+    print(heatCapacity, type(heatCapacity))
+    print(temperatureChange, type(temperatureChange))
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
