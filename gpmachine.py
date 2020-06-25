@@ -98,18 +98,16 @@ def trig():
 def trigCalculate():
     a = int(trigEntryA.get())
     b = int(trigEntryB.get())
-    # c = trigEntryC.get()
-    # θ = trigEntryθ.get()
+    c = int(trigEntryC.get())
+    θ = int(trigEntryθ.get())
     print(a, type(a)) 
     print(b, type(b))
     print(c, type(c))
     print(θ, type(θ))
     if a and b:
         print(math.hypot(a, b))
-    else:
-        if c and b or a 
-    
 
+    
 def hideTrig():
     trigLabel.place_forget()
     trigLabelA.place_forget()
@@ -129,6 +127,12 @@ if True: # Equations elements
     physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
     thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
     thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
+    thermalEnergyChangeLabel = tk.Label(font = ("Arial", "13"), text = "Change in thermal energy (Joules):", fg = "black", bg = "grey")
+    thermalEnergyChangeEntry = tk.Entry(font = ("Arial", "10"))
+    thermalEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass (g):", fg = "black", bg = "grey")
+    thermalEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
+    thermalEnergyHeatCapacityLabel = tk.Label(font = ("Arial", "13"), text = "Specific heat capacity (J/(K kg)):", fg = "black", bg = "grey")
+    thermalEnergyHeatCapacityEntry = tk.Entry(font = ("Arial", "10"))
 
 def equations():
     equationsTitle.place(y = 10, x = 250, anchor = "n")
@@ -141,13 +145,23 @@ def hideEquations():
     thermalEnergyButton.place_forget()
     thermalEnergyLabel.place_forget()
     thermalEnergyEntry.place_forget()
+    thermalEnergyChangeLabel.place_forget()
+    thermalEnergyChangeEntry.place_forget()
+    thermalEnergyMassLabel.place_forget()
+    thermalEnergyMassEntry.place_forget()
+    thermalEnergyHeatCapacityLabel.place_forget()
+    thermalEnergyHeatCapacityEntry.place_forget()
 
 def thermalEnergy():
     thermalEnergyButton.place_forget()
     equationsTitle.place_forget()
     physicsTitle.place_forget()
-    thermalEnergyLabel.place(y = 120, x = 110, anchor = "n")
-    thermalEnergyEntry.place(y = 120, x = 125, anchor = "n")
+    thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
+    thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
+    thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
+    thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
