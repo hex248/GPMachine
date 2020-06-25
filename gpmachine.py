@@ -88,19 +88,18 @@ if True: # Trigonometry elements
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
-    trigLabelA.place(y = 100, x = 100)
-    trigLabelB.place(y = 120, x = 100)
-    trigLabelC.place(y = 140, x = 100)
-    trigLabelθ.place(y = 160, x = 100)
-    trigEntryA.place(y = 100, x = 140, width = 30, height = 20)
-    trigEntryB.place(y = 120, x = 140, width = 30, height = 20)
-    trigEntryC.place(y = 140, x = 140, width = 30, height = 20)
-    trigEntryθ.place(y = 160, x = 140, width = 30, height = 20)
-    trigCalculateButton.place(y = 200, x = 155, width = 70, height = 40, anchor = 'n')
+    trigLabelA.place(y = 100, x = 40)
+    trigLabelB.place(y = 120, x = 40)
+    trigLabelC.place(y = 140, x = 40)
+    trigLabelθ.place(y = 160, x = 40)
+    trigEntryA.place(y = 100, x = 80, width = 80, height = 20)
+    trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
+    trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
+    trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
+    trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
     frame.place_forget()
 
 def trigCalculate():
-    from Tkinter import
     a = trigEntryA.get()
     if a:
         a = float(a)
@@ -118,26 +117,38 @@ def trigCalculate():
     print(c, type(c))
     print(θ, type(θ))
     if a and b:
-        print(math.hypot(a, b))
+        trigEntryC.delete(0, tk.END)
+        trigEntryC.insert(0, str(math.hypot(a, b))
     elif c and b:
-        print(math.sqrt(c ** 2 - b ** 2))
+        trigEntryA.delete(0, tk.END)
+        trigEntryA.insert(0, str(math.sqrt(c ** 2 - b ** 2)))
     elif c and a:
-        print(math.sqrt(c ** 2 - a ** 2))
+        trigEntryB.delete(0, tk.END)
+        trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
     if a and c:
-        print(math.degrees(math.asin(a / c)))
+        trigEntryB.delete(0, tk.END)
+        trigEntryB.insert(0, str(math.degrees(math.asin(a / c)))
     elif b and c:
-        print(math.degrees(math.acos(b / c)))
+        trigEntryA.delete(0, tk.END)
+        trigEntryA.insert(0, str(math.degrees(math.acos(b / c)))
     elif a and b:
-        print(math.degrees(math.atan(a / b)))
+        trigEntryC.delete(0, tk.END)
+        trigEntryC.insert(0, str(math.degrees(math.atan(a / b))))
     if θ and a:
-        print(a / math.tan(math.radians(θ))) # finding adj(b)
-        print(a * math.sin(math.radians(θ))) # finding hyp(c)
+        trigEntryB.delete(0, tk.END)
+        trigEntryB.insert(0, str(a / math.tan(math.radians(θ)))) # finding adj(b)
+        trigEntryC.delete(0, tk.END)
+        trigEntryC.insert(0, str(a * math.sin(math.radians(θ)))) # finding hyp(c)
     if θ and b:
-        a.intert(0, (b * math.tan(math.radians(θ)))) # finding opp(a)
-        print(b / math.cos(math.radians(θ))) # finding hyp(c)
+        trigEntryA.delete(0, tk.END)
+        trigEntryA.insert(0, str(b * math.tan(math.radians(θ)))) # finding opp(a)
+        trigEntryC.delete(0, tk.END)
+        trigEntryC.insert(0, str(b / math.cos(math.radians(θ)))) # finding hyp(c)
     if θ and c:
-        print(c * math.cos(math.radians(θ))) # finding adj(b)
-        print(c * math.sin(math.radians(θ))) # finding opp(a)
+        trigEntryB.delete(0, tk.END)
+        trigEntryB.insert(0, str(c * math.cos(math.radians(θ)))) # finding adj(b)
+        trigEntryA.delete(0, tk.END)
+        trigEntryA.insert(0, str(c * math.sin(math.radians(θ)))) # finding opp(a)
 
 def hideTrig():
     trigLabel.place_forget()
@@ -217,14 +228,6 @@ def thermalEnergyCalculate():
     print(mass, type(mass))
     print(heatCapacity, type(heatCapacity))
     print(temperatureChange, type(temperatureChange))
-    if thermal and mass and heatCapacity:
-        print("temperature change is:", thermal / (mass * heatCapacity))
-    elif thermal and mass and temperatureChange:
-        print("specific heat capacity:", thermal / (mass * temperatureChange))
-    elif thermal and heatCapacity and temperatureChange:
-        print("specific heat capacity:", thermal / (heatCapacity * temperatureChange))
-    elif mass and heatCapacity and temperatureChange:
-        print("specific heat capacity:", (mass * heatCapacity * temperatureChange))
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
