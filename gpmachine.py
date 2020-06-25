@@ -68,17 +68,27 @@ def home():
 if True: # Trigonometry elements
     trigImage = tk.PhotoImage(file ='trig.png')
     trigLabel = tk.Label(root, image = trigImage)
-    trigLabelA = tk.Label(font = '60', text = 'a', fg = 'black', bg = 'grey')
+    trigLabelA = tk.Label(font = '60', text = 'A', fg = 'black', bg = 'grey')
+    trigLabelB = tk.Label(font = '60', text = 'B', fg = 'black', bg = 'grey')
+    trigLabelC = tk.Label(font = '60', text = 'C', fg = 'black', bg = 'grey')
+    trigLabelθ = tk.Label(font = '60', text = 'θ', fg = 'black', bg = 'grey')
     frame = tk.Frame(root, bg='grey')
     frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 def trig():
     trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
     trigLabelA.place(y = 100, x = 100)
+    trigLabelB.place(y = 120, x = 100)
+    trigLabelC.place(y = 140, x = 100)
+    trigLabelθ.place(y = 160, x = 100)
     frame.place_forget()
 
 def hideTrig():
     trigLabel.place_forget()
+    trigLabelA.place_forget()
+    trigLabelB.place_forget()
+    trigLabelC.place_forget()
+    trigLabelθ.place_forget()
     frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
 
@@ -107,7 +117,7 @@ def thermalEnergy():
     thermalEnergyLabel.place(y = 120, x = 110, anchor = "n")
     thermalEnergyEntry.place(y = 120, x = 125, anchor = "n")
 
-if True: #ALL BUTTONS
+if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
