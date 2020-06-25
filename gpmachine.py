@@ -224,10 +224,14 @@ def thermalEnergyCalculate():
     temperatureChange = thermalEnergyTemperatureChangeEntry.get()
     if temperatureChange:
         temperatureChange = float(temperatureChange)
-    print(thermal, type(thermal))
-    print(mass, type(mass))
-    print(heatCapacity, type(heatCapacity))
-    print(temperatureChange, type(temperatureChange))
+    if thermal and mass and heatCapacity:
+        print("temperature change is:", thermal / (mass * heatCapacity))
+    elif thermal and mass and temperatureChange:
+        print("specific heat capacity:", thermal / (mass * temperatureChange))
+    elif thermal and heatCapacity and temperatureChange:
+        print("specific heat capacity:", thermal / (heatCapacity * temperatureChange))
+    elif mass and heatCapacity and temperatureChange:
+        print("specific heat capacity:", (mass * heatCapacity * temperatureChange))
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
