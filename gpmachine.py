@@ -100,6 +100,7 @@ def trig():
     frame.place_forget()
 
 def trigCalculate():
+    from Tkinter import
     a = trigEntryA.get()
     if a:
         a = float(a)
@@ -132,7 +133,7 @@ def trigCalculate():
         print(a / math.tan(math.radians(θ))) # finding adj(b)
         print(a * math.sin(math.radians(θ))) # finding hyp(c)
     if θ and b:
-        print(b * math.tan(math.radians(θ))) # finding opp(a)
+        a.intert(0, (b * math.tan(math.radians(θ)))) # finding opp(a)
         print(b / math.cos(math.radians(θ))) # finding hyp(c)
     if θ and c:
         print(c * math.cos(math.radians(θ))) # finding adj(b)
