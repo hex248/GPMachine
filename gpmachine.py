@@ -23,6 +23,7 @@ if True: # Imports and global variables
     root.iconphoto(False, icon)
     gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
     pokemonImage = tk.PhotoImage(file = "./images/pokemonWallpaper1.png")
+    otherImage = tk.PhotoImage(file = "./images/otherWallpaper.png")
 
 def button(value):
     # print("Button Pressed:", value)
@@ -51,6 +52,7 @@ def home():
     backButton.place_forget()
     hideTrig()
     hideEquations()
+    hideGbemu()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
@@ -314,8 +316,8 @@ if True: # Game Boy Emulator
         
 
     def gbemu():
-        pokemonButton.place(x = 250, y = 50, width = 490, height = 80, anchor = "n")
-        otherButton.place(x = 250, y = 135, width = 490, height = 80, anchor = "n")
+        pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
+        otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
 
     def hideGbemu():
         pokemonHide()
@@ -331,6 +333,7 @@ if True: # Game Boy Emulator
             pokemonSilverButton.place(x = 5, y = 278.75, width = 490, height = 100)
             pokemonPinballButton.place(x = 5, y = 383.75, width = 490, height = 100)
             pokemonButton.place_forget()
+            otherButton.place_forget()
         
         def pokemonHide():
             pokemonButton.place_forget()
@@ -396,6 +399,8 @@ if True: # Game Boy Emulator
             snakeyButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
         
         def otherhide():
+            otherButton.place_forget()
+
             tetrisButton.place_forget()
             kirbydreamlandButton.place_forget()
             donkeykongButton.place_forget()
@@ -519,7 +524,7 @@ if True: ### Internal Buttons
             pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "silver", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75')
             pokemonPinballButton = tk.Button(root, text = "Pinball", font="60, 20", bg = "pink", command=lambda: pokemonPinball(), justify = "center", wraplength = '118.75')
         if True: # other games buttons
-            otherButton = tk.Button(root, text = "Other", font="60, 50", bg = "grey", command=lambda: otherShow(), justify = "center", wraplength = '400')
+            otherButton = tk.Button(root, text = "Other", font="60, 50", bg = "grey", command=lambda: otherShow(), justify = "center", wraplength = '400', image=otherImage)
 
             tetrisButton = tk.Button(root, text = "Tetris", font="60, 20", bg = "grey", command=lambda: tetris(), justify = "center", wraplength = '118.75')
             kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75')
