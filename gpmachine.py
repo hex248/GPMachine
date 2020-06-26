@@ -313,51 +313,58 @@ if True: # Game Boy Emulator
     def hideGbemu():
         pokemonHide()
     
-    def pokemonShow():
-        pokemonBlueButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
-        pokemonGreenButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
-        pokemonRedButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
-        pokemonYellowButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
-        pokemonGoldButton.place(x = 5, y = 173.75, width = 490, height = buttonHeight)
-        pokemonSilverButton.place(x = 5, y = 297.5, width = 490, height = buttonHeight)
-        pokemonButton.place_forget()
-    
-    def pokemonHide():
-        pokemonButton.place_forget()
-        pokemonBlueButton.place_forget()
-        pokemonGreenButton.place_forget()
-        pokemonRedButton.place_forget()
-        pokemonYellowButton.place_forget()
-        pokemonGoldButton.place_forget()
-        pokemonSilverButton.place_forget()
+    if True: # Pokémon
+        def pokemonShow():
+            pokemonBlueButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
+            pokemonGreenButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
+            pokemonRedButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
+            pokemonYellowButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
+            pokemonGoldButton.place(x = 5, y = 173.75, width = 490, height = 100)
+            pokemonSilverButton.place(x = 5, y = 278.75, width = 490, height = 100)
+            pokemonPinballButton.place(x = 5, y = 383.75, width = 490, height = 100)
+            pokemonButton.place_forget()
+        
+        def pokemonHide():
+            pokemonButton.place_forget()
+            pokemonBlueButton.place_forget()
+            pokemonGreenButton.place_forget()
+            pokemonRedButton.place_forget()
+            pokemonYellowButton.place_forget()
+            pokemonGoldButton.place_forget()
+            pokemonSilverButton.place_forget()
 
-    def pokemonBlue():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonBlue.gb')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
-    def pokemonGreen():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonGreen.gb')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
-    def pokemonRed():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonRed.gb')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
-    def pokemonYellow():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonYellow.gb')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
-    def pokemonGold():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonGold.gbc')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
-    def pokemonSilver():
-        pyboy = PyBoy('ROMs/Pokemon/PokemonSilver.gbc')
+        def pokemonBlue():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonBlue.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonGreen():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonGreen.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonRed():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonRed.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonYellow():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonYellow.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonGold():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonGold.gbc')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonSilver():
+            pyboy = PyBoy('ROMs/Pokemon/PokemonSilver.gbc')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pokemonPinball():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonPinball.gbc')
         while not pyboy.tick():
             pass
             root.withdraw()
@@ -415,6 +422,7 @@ if True: ### Internal Buttons
             pokemonYellowButton = tk.Button(root, text = "Yellow", font="60, 20", bg = "yellow", command=lambda: pokemonYellow(), justify = "center", wraplength = '118.75')
             pokemonGoldButton = tk.Button(root, text = "Gold", font="60, 20", bg = "gold", command=lambda: pokemonGold(), justify = "center", wraplength = '118.75')
             pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "silver", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75')
+            pokemonPinballButton = tk.Button(root, text = "Pinball", font="60, 20", bg = "pink", command=lambda: pokemonPinball(), justify = "center", wraplength = '118.75')
 
 
 #end
