@@ -2,6 +2,7 @@ if True: # Imports and global variables
     import tkinter as tk
     import os
     import math
+    import time
     root = tk.Tk()
     canvasWidth = 500
     canvasHeight = 500
@@ -49,6 +50,7 @@ def button(value):
         trigCalculate()
     if value == "thermalenergycalculate":
         thermalEnergyCalculate()
+
 def home():
     backButton.place_forget()
     hideTrig()
@@ -77,6 +79,7 @@ if True: # Trigonometry elements
     trigLabelB = tk.Label(font = '60', text = 'B', fg = 'black', bg = 'grey')
     trigLabelC = tk.Label(font = '60', text = 'C', fg = 'black', bg = 'grey')
     trigLabelθ = tk.Label(font = '60', text = 'θ', fg = 'black', bg = 'grey')
+    trigErrorLabel = tk.Label(font = '50, 100', text = 'ERROR', fg = 'red', bg = 'grey')
     trigEntryA = tk.Entry(font = '60')
     trigEntryB = tk.Entry(font = '60')
     trigEntryC = tk.Entry(font = '60')
@@ -94,10 +97,12 @@ def trig():
     trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
     trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
     trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
+    trigResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
     trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
     frame.place_forget()
 
 def trigCalculate():
+    trigErrorLabel.place_forget()
     a = trigEntryA.get()
     if a:
         a = float(a)
@@ -114,6 +119,8 @@ def trigCalculate():
     # print(b, type(b))
     # print(c, type(c))
     # print(θ, type(θ))
+    if θ >= 90:
+        trigErrorLabel.place(y = 300, x = 250, width = 490, height = 200, anchor = 'n')
     if a and b:
         trigEntryC.delete(0, tk.END)
         trigEntryC.insert(0, str(math.hypot(a, b)))
@@ -148,6 +155,14 @@ def trigCalculate():
         trigEntryA.delete(0, tk.END)
         trigEntryA.insert(0, str(c * math.sin(math.radians(θ)))) # finding opp(a)
 
+def trigReset():
+    trigEntryA.delete(0, tk.END)
+    trigEntryB.delete(0, tk.END)
+    trigEntryC.delete(0, tk.END)
+    trigEntryθ.delete(0, tk.END)
+    trigErrorLabel.place_forget()
+
+
 def hideTrig():
     trigLabel.place_forget()
     trigLabelA.place_forget()
@@ -158,6 +173,8 @@ def hideTrig():
     trigEntryB.place_forget()
     trigEntryC.place_forget()
     trigEntryθ.place_forget()
+    trigErrorLabel.place_forget()
+    trigResetButton.place_forget()
     trigCalculateButton.place_forget()
     frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
@@ -241,7 +258,7 @@ if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
-    equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"))
+    equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
 
     button3 = tk.Button(frame, text="button3", bg=mColour, font="60", command=lambda: button("button3"))
@@ -295,6 +312,7 @@ if True: ### Internal Buttons
     
     if True: # Trig Buttons
         trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: button("trigcalculate"))
+        trigResetButton = tk.Button(root, text="Reset", bg=bColour, font="60", command=lambda: trigReset())
 
 #end
 root.mainloop()
