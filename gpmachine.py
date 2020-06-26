@@ -184,7 +184,7 @@ if True: # Equations
         thermalEnergyTemperatureChangeLabel = tk.Label(font = ("Arial", "13"), text = "Temperature change (C):", fg = "black", bg = "grey")
         thermalEnergyTemperatureChangeEntry = tk.Entry(font = ("Arial", "10"))
         # kinetic elements
-        kineticEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Kinetic Energy", fg = "black", bg = "grey")
+        kineticEnergyTitle = tk.Label(font = ("Arial", "30"), text = "Kinetic Energy", fg = "black", bg = "grey")
         kineticEnergyLabel = tk.Label(font = ("Arial", "13"), text = "Kinetic energy:", fg = "black", bg = "grey")
         kineticEnergyEntry = tk.Entry(font = ("Arial", "10"))
         kineticEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass:", fg = "black", bg = "grey")
@@ -196,7 +196,7 @@ if True: # Equations
         equationsTitle.place(y = 10, x = 250, anchor = "n")
         physicsTitle.place(y = 80, x = 125, anchor = "n")
         thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
-        kineticEnergyButton.place(y = 150, x = 125, anchor = "n")
+        kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
 
     def hideEquations():
         hideEquationMenu()
@@ -264,24 +264,24 @@ if True: # Equations
 
     def kineticEnergy():
         hideEquationMenu()
-        kineticEnergyTitle.place(y = 50, x = 250, anchor = "n")
-        kineticEnergyLabel.place(y = 120, x = 20, anchor = "w")
-        kineticEnergyEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
-        kineticEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
-        kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
-        kineticEnergyVelocityLabel.place(y = 200, x = 35, anchor = "w")
-        kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
-        kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
-        
+        kineticEnergyTitle.place(y = 30, x = 250, anchor = "n")
+        kineticEnergyLabel.place(y = 120, x = 205, anchor = "n")
+        kineticEnergyEntry.place(y = 120, x = 285, anchor = "n", width = 45, height = 20)
+        kineticEnergyMassLabel.place(y = 157, x = 238, anchor = "n")
+        kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "n", width = 45, height = 20)
+        kineticEnergyVelocityLabel.place(y = 197, x = 228, anchor = "n")
+        kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "n", width = 45, height = 20)
+        kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "n", width = 90, height = 20)
+
     def hideKineticEnergy():
-        kineticEnergyTitle.place_forget
-        kineticEnergyLabel.place_forget
-        kineticEnergyEntry.place_forget
-        kineticEnergyMassLabel.place_forget
-        kineticEnergyMassEntry.place_forget
-        kineticEnergyVelocityLabel.place_forget
-        kineticEnergyVelocityEntry.place_forget
-        kineticEnergyCalculateButton.place_forget
+        kineticEnergyTitle.place_forget()
+        kineticEnergyLabel.place_forget()
+        kineticEnergyEntry.place_forget()
+        kineticEnergyMassLabel.place_forget()
+        kineticEnergyMassEntry.place_forget()
+        kineticEnergyVelocityLabel.place_forget()
+        kineticEnergyVelocityEntry.place_forget()
+        kineticEnergyCalculateButton.place_forget()
 
     def kineticEnergyCalculate():
         kinetic = kineticEnergyEntry.get()
@@ -290,12 +290,21 @@ if True: # Equations
         mass = kineticEnergyMassEntry.get()
         if mass:
             mass = float(mass)
-        heatCapacity = kineticEnergyHeatCapacityEntry.get()
-        if heatCapacity:
-            heatCapacity = float(heatCapacity)
-        temperatureChange = kineticEnergyTemperatureChangeEntry.get()
-        if temperatureChange:
-            temperatureChange = float(temperatureChange)
+        velocity = kineticEnergyVelocityEntry.get()
+        if velocity:
+            velocity = float(velocity)
+
+        if kinetic and mass:
+            kineticEnergyVelocityEntry.delete(0, tk.END)
+            kineticEnergyVelocityEntry.insert(0, str(math.sqrt((mass / 2) / kinetic)))
+        if kinetic and velocity:
+            kineticEnergyMassEntry.delete(0, tk.END)
+            kineticEnergyMassEntry.insert(0, str(((velocity ** 2) / kinetic) * 2))
+        if mass and velocity:
+            kineticEnergyEntry.delete(0, tk.END)
+            kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
+
+
 
 if True: # Game Boy Emulator
     def gameboyEmulatorRun():
@@ -370,6 +379,7 @@ if True: # Game Boy Emulator
             while not pyboy.tick():
                 pass
                 root.withdraw()
+
     if True: #Other Games
 
         def otherShow():
