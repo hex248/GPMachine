@@ -2,6 +2,7 @@ if True: # Imports and global variables
     import tkinter as tk
     import os
     import math
+    import time
     root = tk.Tk()
     canvasWidth = 500
     canvasHeight = 500
@@ -43,12 +44,7 @@ def button(value):
         trig()
     if value == "equation":
         equations()
-    if value == "thermalenergy":
-        thermalEnergy()
-    if value == "trigcalculate":
-        trigCalculate()
-    if value == "thermalenergycalculate":
-        thermalEnergyCalculate()
+
 def home():
     backButton.place_forget()
     hideTrig()
@@ -165,6 +161,8 @@ def hideTrig():
 if True: # Equations elements
     equationsTitle = tk.Label(font = ("Arial", "30"), text = "Equations", fg = "black", bg = "grey")
     physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
+    # thermal elements
+    thermalEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Change in Thermal Energy", fg = "black", bg = "grey")
     thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
     thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
     thermalEnergyChangeLabel = tk.Label(font = ("Arial", "13"), text = "Change in thermal energy (Joules):", fg = "black", bg = "grey")
@@ -175,17 +173,48 @@ if True: # Equations elements
     thermalEnergyHeatCapacityEntry = tk.Entry(font = ("Arial", "10"))
     thermalEnergyTemperatureChangeLabel = tk.Label(font = ("Arial", "13"), text = "Temperature change (C):", fg = "black", bg = "grey")
     thermalEnergyTemperatureChangeEntry = tk.Entry(font = ("Arial", "10"))
-    thermalEnergyCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: button("thermalenergycalculate"))
+    # kinetic elements
+    kineticEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Kinetic Energy", fg = "black", bg = "grey")
+    kineticEnergyLabel = tk.Label(font = ("Arial", "13"), text = "Kinetic energy:", fg = "black", bg = "grey")
+    kineticEnergyEntry = tk.Entry(font = ("Arial", "10"))
+    kineticEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass:", fg = "black", bg = "grey")
+    kineticEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
+    kineticEnergyVelocityLabel = tk.Label(font = ("Arial", "13"), text = "Velocity:", fg = "black", bg = "grey")
+    kineticEnergyVelocityEntry = tk.Entry(font = ("Arial", "10"))
 
 def equations():
     equationsTitle.place(y = 10, x = 250, anchor = "n")
     physicsTitle.place(y = 80, x = 125, anchor = "n")
     thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
+    kineticEnergyButton.place(y = 150, x = 125, anchor = "n")
 
 def hideEquations():
+    hideEquationMenu()
+    hideThermalEnergy()
+    hideKineticEnergy()
+
+def hideEquationMenu():
+    # hide buttons
+    thermalEnergyButton.place_forget()
+    kineticEnergyButton.place_forget()
+    # hide labels
     equationsTitle.place_forget()
     physicsTitle.place_forget()
-    thermalEnergyButton.place_forget()
+
+def thermalEnergy():
+    hideEquationMenu()
+    thermalEnergyTitle.place
+    thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
+    thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
+    thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
+    thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
+    thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
+    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+
+def hideThermalEnergy():
     thermalEnergyLabel.place_forget()
     thermalEnergyEntry.place_forget()
     thermalEnergyChangeLabel.place_forget()
@@ -197,20 +226,6 @@ def hideEquations():
     thermalEnergyTemperatureChangeLabel.place_forget()
     thermalEnergyTemperatureChangeEntry.place_forget()
     thermalEnergyCalculateButton.place_forget()
-
-def thermalEnergy():
-    thermalEnergyButton.place_forget()
-    equationsTitle.place_forget()
-    physicsTitle.place_forget()
-    thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
-    thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
-    thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
-    thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
-    thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
 
 def thermalEnergyCalculate():
     thermal = thermalEnergyChangeEntry.get()
@@ -236,6 +251,42 @@ def thermalEnergyCalculate():
         thermalEnergyMassEntry.insert(0, str(thermal / (heatCapacity * temperatureChange)))
         thermalEnergyChangeEntry.delete(0, tk.END)
         thermalEnergyChangeEntry.insert(0, str(mass * heatCapacity * temperatureChange))
+
+def kineticEnergy():
+    hideEquationMenu()
+    kineticEnergyTitle.place(y = 50, x = 250, anchor = "n")
+    kineticEnergyLabel.place(y = 120, x = 20, anchor = "w")
+    kineticEnergyEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
+    kineticEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
+    kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
+    kineticEnergyVelocityLabel.place(y = 200, x = 35, anchor = "w")
+    kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
+    kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+    
+def hideKineticEnergy():
+    kineticEnergyTitle.place_forget
+    kineticEnergyLabel.place_forget
+    kineticEnergyEntry.place_forget
+    kineticEnergyMassLabel.place_forget
+    kineticEnergyMassEntry.place_forget
+    kineticEnergyVelocityLabel.place_forget
+    kineticEnergyVelocityEntry.place_forget
+    kineticEnergyCalculateButton.place_forget
+
+def kineticEnergyCalculate():
+    kinetic = kineticEnergyEntry.get()
+    if kinetic:
+        kinetic = float(kinetic)
+    mass = kineticEnergyMassEntry.get()
+    if mass:
+        mass = float(mass)
+    heatCapacity = kineticEnergyHeatCapacityEntry.get()
+    if heatCapacity:
+        heatCapacity = float(heatCapacity)
+    temperatureChange = kineticEnergyTemperatureChangeEntry.get()
+    if temperatureChange:
+        temperatureChange = float(temperatureChange)
+
 
 if True: #Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
@@ -291,10 +342,13 @@ if True: #Home Screen
 if True: ### Internal Buttons
     
     if True: # Equation Buttons
-        thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: button("thermalenergy"))
+        thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
+        thermalEnergyCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: thermalEnergyCalculate())
+        kineticEnergyButton = tk.Button(root, text="Kinetic energy", bg=mColour, font="60", command=lambda: kineticEnergy())
+        kineticEnergyCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: kineticEnergyCalculate())
     
     if True: # Trig Buttons
-        trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: button("trigcalculate"))
+        trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: trigCalculate())
 
 #end
 root.mainloop()
