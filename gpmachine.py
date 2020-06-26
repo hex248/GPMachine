@@ -51,6 +51,7 @@ def home():
     backButton.place_forget()
     hideTrig()
     hideEquations()
+    otherButton.place_forget()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
