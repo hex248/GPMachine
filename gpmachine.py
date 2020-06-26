@@ -51,7 +51,7 @@ def home():
     backButton.place_forget()
     hideTrig()
     hideEquations()
-    otherButton.place_forget()
+    hideGbemu()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
     button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
@@ -61,6 +61,21 @@ def home():
     button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
     button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
     gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
+
+def Reset():
+        trigEntryA.delete(0, tk.END)
+        trigEntryB.delete(0, tk.END)
+        trigEntryC.delete(0, tk.END)
+        trigEntryθ.delete(0, tk.END)
+        thermalEnergyChangeEntry(0, tk.END)
+        thermalEnergyEntry(0, tk.END)
+        thermalEnergyMassEntry(0, tk.END)
+        thermalEnergyHeatCapacityEntry(0, tk.END)
+        thermalEnergyTemperatureChangeEntry(0, tk.END)
+        kineticEnergyEntry(0, tk.END)
+        kineticEnergyMassEntry(0, tk.END)
+        kineticEnergyVelocityEntry(0, tk.END)
+        trigErrorLabel.place_forget()
 
 if True: # Trigonometry
 
@@ -89,7 +104,7 @@ if True: # Trigonometry
         trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
         trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
         trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
-        trigResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
+        ResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
         trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
         frame.place_forget()
 
@@ -144,13 +159,6 @@ if True: # Trigonometry
             trigEntryA.delete(0, tk.END)
             trigEntryA.insert(0, str(c * math.sin(math.radians(θ)))) # finding opp(a)
 
-    def trigReset():
-        trigEntryA.delete(0, tk.END)
-        trigEntryB.delete(0, tk.END)
-        trigEntryC.delete(0, tk.END)
-        trigEntryθ.delete(0, tk.END)
-        trigErrorLabel.place_forget()
-
     def hideTrig():
         trigLabel.place_forget()
         trigLabelA.place_forget()
@@ -162,7 +170,7 @@ if True: # Trigonometry
         trigEntryC.place_forget()
         trigEntryθ.place_forget()
         trigErrorLabel.place_forget()
-        trigResetButton.place_forget()
+        ResetButton.place_forget()
         trigCalculateButton.place_forget()
         frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
@@ -223,6 +231,7 @@ if True: # Equations
         thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
         thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
         thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+        ResetButton.place(y = 325, x = 285, width = 70, height = 40, anchor = 'w')
 
     def hideThermalEnergy():
         thermalEnergyLabel.place_forget()
@@ -264,6 +273,7 @@ if True: # Equations
 
     def kineticEnergy():
         hideEquationMenu()
+        ResetButton.place(y = 325, x = 285, width = 70, height = 40, anchor = 'n')
         kineticEnergyTitle.place(y = 30, x = 250, anchor = "n")
         kineticEnergyLabel.place(y = 120, x = 205, anchor = "n")
         kineticEnergyEntry.place(y = 120, x = 285, anchor = "n", width = 45, height = 20)
@@ -303,8 +313,6 @@ if True: # Equations
         if mass and velocity:
             kineticEnergyEntry.delete(0, tk.END)
             kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
-
-
 
 if True: # Game Boy Emulator
     def gameboyEmulatorRun():
@@ -398,6 +406,8 @@ if True: # Game Boy Emulator
             snakeyButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
         
         def otherhide():
+            otherButton.place_forget()
+
             tetrisButton.place_forget()
             kirbydreamlandButton.place_forget()
             donkeykongButton.place_forget()
@@ -507,7 +517,7 @@ if True: ### Internal Buttons
     
     if True: # Trig Buttons
         trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: trigCalculate())
-        trigResetButton = tk.Button(root, text="Reset", bg=bColour, font="60", command=lambda: trigReset())
+        ResetButton = tk.Button(root, text="Reset", bg=bColour, font="60", command=lambda: Reset())
 
     if True: # Emulator Buttons
         if True: # Pokemon
