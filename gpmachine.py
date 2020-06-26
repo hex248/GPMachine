@@ -3,6 +3,9 @@ if True: # Imports and global variables
     import os
     import math
     import time
+    import pygame
+    import random
+    from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
     canvasWidth = 500
@@ -25,11 +28,12 @@ if True: # Imports and global variables
     pokemonImage = tk.PhotoImage(file = "./images/pokemonWallpaper1.png")
     otherImage = tk.PhotoImage(file = "./images/otherWallpaper.png")
 
+
 def button(value):
     # print("Button Pressed:", value)
     trigonometryButton.place_forget()
     equationButton.place_forget()
-    button3.place_forget()
+    snakerunbutton.place_forget()
     button4.place_forget()
     button5.place_forget()
     button6.place_forget()
@@ -55,7 +59,7 @@ def home():
     hideGbemu()
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
-    button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    snakerunbutton.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
     button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
     button5.place(x="5", y="128.75", width=buttonWidth, height=buttonHeight)
     button6.place(x="128.75", y="128.75", width=buttonWidth, height=buttonHeight)
@@ -315,6 +319,46 @@ if True: # Equations
             kineticEnergyEntry.delete(0, tk.END)
             kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
 
+def snakerun():
+    class cube(object):
+        rows = 20
+        w = 500
+        def __init__(self,start,dirnx=1,dirny=0,color=(255,0,0)):
+            self.pos = start
+            self.dirnx = 1
+            self.dirny = 0
+            self.color = color
+
+
+        def move(self, dirnx, dirny):
+            self.dirnx = dirnx
+            self.dirny = dirny
+            self.pos = (self.pos[0] + self.dirnx, self.pos[1] + self.dirny)
+
+        def draw(self, surface, eyes=False):
+            dis = self.w // self.rows
+            i = self.pos[0]
+            j = self.pos[1]
+
+            pygame.draw.rect(surface, self.color, (i*dis+1,j*dis+1, dis-2, dis-2))
+            if eyes:
+                centre = dis//2
+                radius = 3
+                circleMiddle = (i*dis+centre-radius,j*dis+8)
+                circleMiddle2 = (i*dis + dis -radius*2, j*dis+8)
+                pygame.draw.circle(surface, (0,0,0), circleMiddle, radius)
+                pygame.draw.circle(surface, (0,0,0), circleMiddle2, radius)
+
+
+
+
+class snake(object):
+    pass
+
+
+
+
+
 if True: # Game Boy Emulator
     def gameboyEmulatorRun():
         pyboy = PyBoy('ROMs/PokemonRed.gb')
@@ -485,8 +529,8 @@ if True: #Home Screen
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
 
-    button3 = tk.Button(frame, text="button3", bg=mColour, font="60", command=lambda: button("button3"))
-    button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    snakerunbutton = tk.Button(frame, text="Snake", bg=mColour, font="60",command=lambda: snakerun())
+    snakerunbutton.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
     button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
