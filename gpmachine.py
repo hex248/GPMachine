@@ -323,6 +323,7 @@ if True: # Game Boy Emulator
             pokemonSilverButton.place(x = 5, y = 278.75, width = 490, height = 100)
             pokemonPinballButton.place(x = 5, y = 383.75, width = 490, height = 100)
             pokemonButton.place_forget()
+            otherButton.place_forget()
         
         def pokemonHide():
             pokemonButton.place_forget()
