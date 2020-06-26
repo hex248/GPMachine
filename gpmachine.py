@@ -16,8 +16,6 @@ if True: # Imports and global variables
     gColour = "#808080"
     canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
     canvas.pack()
-    def fl(value):
-        float(value)
 
 def button(value):
     # print("Button Pressed:", value)
@@ -236,7 +234,6 @@ def thermalEnergyCalculate():
     elif thermal and heatCapacity and temperatureChange:
         thermalEnergyMassEntry.delete(0, tk.END)
         thermalEnergyMassEntry.insert(0, str(thermal / (heatCapacity * temperatureChange)))
-    elif mass and heatCapacity and temperatureChange:
         thermalEnergyChangeEntry.delete(0, tk.END)
         thermalEnergyChangeEntry.insert(0, str(mass * heatCapacity * temperatureChange))
 
@@ -301,6 +298,3 @@ if True: ### Internal Buttons
 
 #end
 root.mainloop()
-
-
-
