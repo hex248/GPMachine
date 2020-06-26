@@ -3,6 +3,7 @@ if True: # Imports and global variables
     import os
     import math
     import time
+    from pyboy import PyBoy
     root = tk.Tk()
     canvasWidth = 500
     canvasHeight = 500
@@ -10,13 +11,18 @@ if True: # Imports and global variables
     buttonHeight = 118.75
     canvasWidth = 500
     canvasHeight = 500
-    buttonWidth = 118.75
-    buttonHeight = 118.75
+    emuButtonWidth = 490
+    emuButtonHeight = 242.5
     mColour = "#36b3ac"
     bColour = "#b52126"
     gColour = "#808080"
     canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
     canvas.pack()
+    root.title("GPMachine")
+    icon = tk.PhotoImage(file = "./icons/GPicon.png")
+    root.iconphoto(False, icon)
+    gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
+    pokemonImage = tk.PhotoImage(file = "./images/pokemonWallpaper1.png")
 
 def button(value):
     # print("Button Pressed:", value)
@@ -28,14 +34,8 @@ def button(value):
     button6.place_forget()
     button7.place_forget()
     button8.place_forget()
-    button9.place_forget()
-    button10.place_forget()
-    button11.place_forget()
-    button12.place_forget()
-    button13.place_forget()
-    button14.place_forget()
-    button15.place_forget()
-    button16.place_forget()
+    gameboyEmulatorButton.place_forget()
+    hideGbemu()
     backButton.place(x="5", y="5")
 
     if value == "back":
@@ -44,6 +44,8 @@ def button(value):
         trig()
     if value == "equation":
         equations()
+    if value == "gbemu":
+        gbemu()
 
 def home():
     backButton.place_forget()
@@ -57,250 +59,308 @@ def home():
     button6.place(x="128.75", y="128.75", width=buttonWidth, height=buttonHeight)
     button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
     button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
-    button9.place(x="5", y="252.5", width=buttonWidth, height=buttonHeight)
-    button10.place(x="128.75", y="252.5", width=buttonWidth, height=buttonHeight)
-    button11.place(x="252.5", y="252.5", width=buttonWidth, height=buttonHeight)
-    button12.place(x="376.25", y="252.5", width=buttonWidth, height=buttonHeight)
-    button13.place(x="5", y="376.25", width=buttonWidth, height=buttonHeight)
-    button14.place(x="128.75", y="376.25", width=buttonWidth, height=buttonHeight)
-    button15.place(x="252.5", y="376.25", width=buttonWidth, height=buttonHeight)
-    button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
+    gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
 
-if True: # Trigonometry elements
-    trigImage = tk.PhotoImage(file ='trig.png')
-    trigLabel = tk.Label(root, image = trigImage)
-    trigLabelA = tk.Label(font = '60', text = 'A', fg = 'black', bg = 'grey')
-    trigLabelB = tk.Label(font = '60', text = 'B', fg = 'black', bg = 'grey')
-    trigLabelC = tk.Label(font = '60', text = 'C', fg = 'black', bg = 'grey')
-    trigLabelθ = tk.Label(font = '60', text = 'θ', fg = 'black', bg = 'grey')
-    trigErrorLabel = tk.Label(font = '50, 100', text = 'ERROR', fg = 'red', bg = 'grey')
-    trigEntryA = tk.Entry(font = '60')
-    trigEntryB = tk.Entry(font = '60')
-    trigEntryC = tk.Entry(font = '60')
-    trigEntryθ = tk.Entry(font = '60')
-    frame = tk.Frame(root, bg='grey')
-    frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
+if True: # Trigonometry
 
-def trig():
-    trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
-    trigLabelA.place(y = 100, x = 40)
-    trigLabelB.place(y = 120, x = 40)
-    trigLabelC.place(y = 140, x = 40)
-    trigLabelθ.place(y = 160, x = 40)
-    trigEntryA.place(y = 100, x = 80, width = 80, height = 20)
-    trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
-    trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
-    trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
-    trigResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
-    trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
-    frame.place_forget()
+    if True: # Trigonometry elements
+        trigImage = tk.PhotoImage(file ='trig.png')
+        trigLabel = tk.Label(root, image = trigImage)
+        trigLabelA = tk.Label(font = '60', text = 'A', fg = 'black', bg = 'grey')
+        trigLabelB = tk.Label(font = '60', text = 'B', fg = 'black', bg = 'grey')
+        trigLabelC = tk.Label(font = '60', text = 'C', fg = 'black', bg = 'grey')
+        trigLabelθ = tk.Label(font = '60', text = 'θ', fg = 'black', bg = 'grey')
+        trigErrorLabel = tk.Label(font = '50, 100', text = 'ERROR', fg = 'red', bg = 'grey')
+        trigEntryA = tk.Entry(font = '60')
+        trigEntryB = tk.Entry(font = '60')
+        trigEntryC = tk.Entry(font = '60')
+        trigEntryθ = tk.Entry(font = '60')
+        frame = tk.Frame(root, bg='grey')
+        frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
-def trigCalculate():
-    trigErrorLabel.place_forget()
-    a = trigEntryA.get()
-    if a:
-        a = float(a)
-    b = trigEntryB.get()
-    if b:
-        b = float(b)
-    c = trigEntryC.get()
-    if c:
-        c = float(c)
-    θ = trigEntryθ.get()
-    if θ:
-        θ = float(θ)
-    # print(a, type(a))
-    # print(b, type(b))
-    # print(c, type(c))
-    # print(θ, type(θ))
-    if θ >= 90:
-        trigErrorLabel.place(y = 300, x = 250, width = 490, height = 200, anchor = 'n')
-    if a and b:
-        trigEntryC.delete(0, tk.END)
-        trigEntryC.insert(0, str(math.hypot(a, b)))
-    if c and b:
+    def trig():
+        trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
+        trigLabelA.place(y = 100, x = 40)
+        trigLabelB.place(y = 120, x = 40)
+        trigLabelC.place(y = 140, x = 40)
+        trigLabelθ.place(y = 160, x = 40)
+        trigEntryA.place(y = 100, x = 80, width = 80, height = 20)
+        trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
+        trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
+        trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
+        trigResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
+        trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
+        frame.place_forget()
+
+    def trigCalculate():
+        trigErrorLabel.place_forget()
+        a = trigEntryA.get()
+        if a:
+            a = float(a)
+        b = trigEntryB.get()
+        if b:
+            b = float(b)
+        c = trigEntryC.get()
+        if c:
+            c = float(c)
+        θ = trigEntryθ.get()
+        if θ:
+            θ = float(θ)
+        # print(a, type(a))
+        # print(b, type(b))
+        # print(c, type(c))
+        # print(θ, type(θ))
+        if θ >= 90:
+            trigErrorLabel.place(y = 300, x = 250, width = 490, height = 200, anchor = 'n')
+        if a and b:
+            trigEntryC.delete(0, tk.END)
+            trigEntryC.insert(0, str(math.hypot(a, b)))
+        if c and b:
+            trigEntryA.delete(0, tk.END)
+            trigEntryA.insert(0, str(math.sqrt(c ** 2 - b ** 2)))
+        if c and a:
+            trigEntryB.delete(0, tk.END)
+            trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
+        if a and c:
+            trigEntryθ.delete(0, tk.END)
+            trigEntryθ.insert(0, str(math.degrees(math.asin(a / c))))
+        if b and c:
+            trigEntryθ.delete(0, tk.END)
+            trigEntryθ.insert(0, str(math.degrees(math.acos(b / c))))
+        if a and b:
+            trigEntryθ.delete(0, tk.END)
+            trigEntryθ.insert(0, str(math.degrees(math.atan(a / b))))
+        if θ and a:
+            trigEntryB.delete(0, tk.END)
+            trigEntryB.insert(0, str(a / math.tan(math.radians(θ)))) # finding adj(b)
+            trigEntryC.delete(0, tk.END)
+            trigEntryC.insert(0, str(a * math.sin(math.radians(θ)))) # finding hyp(c)
+        if θ and b:
+            trigEntryA.delete(0, tk.END)
+            trigEntryA.insert(0, str(b * math.tan(math.radians(θ)))) # finding opp(a)
+            trigEntryC.delete(0, tk.END)
+            trigEntryC.insert(0, str(b / math.cos(math.radians(θ)))) # finding hyp(c)
+        if θ and c:
+            trigEntryB.delete(0, tk.END)
+            trigEntryB.insert(0, str(c * math.cos(math.radians(θ)))) # finding adj(b)
+            trigEntryA.delete(0, tk.END)
+            trigEntryA.insert(0, str(c * math.sin(math.radians(θ)))) # finding opp(a)
+
+    def trigReset():
         trigEntryA.delete(0, tk.END)
-        trigEntryA.insert(0, str(math.sqrt(c ** 2 - b ** 2)))
-    if c and a:
         trigEntryB.delete(0, tk.END)
-        trigEntryB.insert(0, str(math.sqrt(c ** 2 - a ** 2)))
-    if a and c:
-        trigEntryθ.delete(0, tk.END)
-        trigEntryθ.insert(0, str(math.degrees(math.asin(a / c))))
-    if b and c:
-        trigEntryθ.delete(0, tk.END)
-        trigEntryθ.insert(0, str(math.degrees(math.acos(b / c))))
-    if a and b:
-        trigEntryθ.delete(0, tk.END)
-        trigEntryθ.insert(0, str(math.degrees(math.atan(a / b))))
-    if θ and a:
-        trigEntryB.delete(0, tk.END)
-        trigEntryB.insert(0, str(a / math.tan(math.radians(θ)))) # finding adj(b)
         trigEntryC.delete(0, tk.END)
-        trigEntryC.insert(0, str(a * math.sin(math.radians(θ)))) # finding hyp(c)
-    if θ and b:
-        trigEntryA.delete(0, tk.END)
-        trigEntryA.insert(0, str(b * math.tan(math.radians(θ)))) # finding opp(a)
-        trigEntryC.delete(0, tk.END)
-        trigEntryC.insert(0, str(b / math.cos(math.radians(θ)))) # finding hyp(c)
-    if θ and c:
-        trigEntryB.delete(0, tk.END)
-        trigEntryB.insert(0, str(c * math.cos(math.radians(θ)))) # finding adj(b)
-        trigEntryA.delete(0, tk.END)
-        trigEntryA.insert(0, str(c * math.sin(math.radians(θ)))) # finding opp(a)
+        trigEntryθ.delete(0, tk.END)
+        trigErrorLabel.place_forget()
 
-def trigReset():
-    trigEntryA.delete(0, tk.END)
-    trigEntryB.delete(0, tk.END)
-    trigEntryC.delete(0, tk.END)
-    trigEntryθ.delete(0, tk.END)
-    trigErrorLabel.place_forget()
+    def hideTrig():
+        trigLabel.place_forget()
+        trigLabelA.place_forget()
+        trigLabelB.place_forget()
+        trigLabelC.place_forget()
+        trigLabelθ.place_forget()
+        trigEntryA.place_forget()
+        trigEntryB.place_forget()
+        trigEntryC.place_forget()
+        trigEntryθ.place_forget()
+        trigErrorLabel.place_forget()
+        trigResetButton.place_forget()
+        trigCalculateButton.place_forget()
+        frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
 
+if True: # Equations
 
-def hideTrig():
-    trigLabel.place_forget()
-    trigLabelA.place_forget()
-    trigLabelB.place_forget()
-    trigLabelC.place_forget()
-    trigLabelθ.place_forget()
-    trigEntryA.place_forget()
-    trigEntryB.place_forget()
-    trigEntryC.place_forget()
-    trigEntryθ.place_forget()
-    trigErrorLabel.place_forget()
-    trigResetButton.place_forget()
-    trigCalculateButton.place_forget()
-    frame.place(relwidth=1, relheight=1, anchor='n', relx = 0.5)
+    if True: # Equations elements
+        equationsTitle = tk.Label(font = ("Arial", "30"), text = "Equations", fg = "black", bg = "grey")
+        physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
+        # thermal elements
+        thermalEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Change in Thermal Energy", fg = "black", bg = "grey")
+        thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
+        thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
+        thermalEnergyChangeLabel = tk.Label(font = ("Arial", "13"), text = "Change in thermal energy (Joules):", fg = "black", bg = "grey")
+        thermalEnergyChangeEntry = tk.Entry(font = ("Arial", "10"))
+        thermalEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass (g):", fg = "black", bg = "grey")
+        thermalEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
+        thermalEnergyHeatCapacityLabel = tk.Label(font = ("Arial", "13"), text = "Specific heat capacity (J/(K kg)):", fg = "black", bg = "grey")
+        thermalEnergyHeatCapacityEntry = tk.Entry(font = ("Arial", "10"))
+        thermalEnergyTemperatureChangeLabel = tk.Label(font = ("Arial", "13"), text = "Temperature change (C):", fg = "black", bg = "grey")
+        thermalEnergyTemperatureChangeEntry = tk.Entry(font = ("Arial", "10"))
+        # kinetic elements
+        kineticEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Kinetic Energy", fg = "black", bg = "grey")
+        kineticEnergyLabel = tk.Label(font = ("Arial", "13"), text = "Kinetic energy:", fg = "black", bg = "grey")
+        kineticEnergyEntry = tk.Entry(font = ("Arial", "10"))
+        kineticEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass:", fg = "black", bg = "grey")
+        kineticEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
+        kineticEnergyVelocityLabel = tk.Label(font = ("Arial", "13"), text = "Velocity:", fg = "black", bg = "grey")
+        kineticEnergyVelocityEntry = tk.Entry(font = ("Arial", "10"))
 
+    def equations():
+        equationsTitle.place(y = 10, x = 250, anchor = "n")
+        physicsTitle.place(y = 80, x = 125, anchor = "n")
+        thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
+        kineticEnergyButton.place(y = 150, x = 125, anchor = "n")
 
-if True: # Equations elements
-    equationsTitle = tk.Label(font = ("Arial", "30"), text = "Equations", fg = "black", bg = "grey")
-    physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
-    # thermal elements
-    thermalEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Change in Thermal Energy", fg = "black", bg = "grey")
-    thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
-    thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
-    thermalEnergyChangeLabel = tk.Label(font = ("Arial", "13"), text = "Change in thermal energy (Joules):", fg = "black", bg = "grey")
-    thermalEnergyChangeEntry = tk.Entry(font = ("Arial", "10"))
-    thermalEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass (g):", fg = "black", bg = "grey")
-    thermalEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
-    thermalEnergyHeatCapacityLabel = tk.Label(font = ("Arial", "13"), text = "Specific heat capacity (J/(K kg)):", fg = "black", bg = "grey")
-    thermalEnergyHeatCapacityEntry = tk.Entry(font = ("Arial", "10"))
-    thermalEnergyTemperatureChangeLabel = tk.Label(font = ("Arial", "13"), text = "Temperature change (C):", fg = "black", bg = "grey")
-    thermalEnergyTemperatureChangeEntry = tk.Entry(font = ("Arial", "10"))
-    # kinetic elements
-    kineticEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Kinetic Energy", fg = "black", bg = "grey")
-    kineticEnergyLabel = tk.Label(font = ("Arial", "13"), text = "Kinetic energy:", fg = "black", bg = "grey")
-    kineticEnergyEntry = tk.Entry(font = ("Arial", "10"))
-    kineticEnergyMassLabel = tk.Label(font = ("Arial", "13"), text = "Mass:", fg = "black", bg = "grey")
-    kineticEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
-    kineticEnergyVelocityLabel = tk.Label(font = ("Arial", "13"), text = "Velocity:", fg = "black", bg = "grey")
-    kineticEnergyVelocityEntry = tk.Entry(font = ("Arial", "10"))
+    def hideEquations():
+        hideEquationMenu()
+        hideThermalEnergy()
+        hideKineticEnergy()
 
-def equations():
-    equationsTitle.place(y = 10, x = 250, anchor = "n")
-    physicsTitle.place(y = 80, x = 125, anchor = "n")
-    thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
-    kineticEnergyButton.place(y = 150, x = 125, anchor = "n")
+    def hideEquationMenu():
+        # hide buttons
+        thermalEnergyButton.place_forget()
+        kineticEnergyButton.place_forget()
+        # hide labels
+        equationsTitle.place_forget()
+        physicsTitle.place_forget()
 
-def hideEquations():
-    hideEquationMenu()
-    hideThermalEnergy()
-    hideKineticEnergy()
+    def thermalEnergy():
+        hideEquationMenu()
+        thermalEnergyTitle.place
+        thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
+        thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
+        thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
+        thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
+        thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
+        thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
+        thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
+        thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
+        thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
 
-def hideEquationMenu():
-    # hide buttons
-    thermalEnergyButton.place_forget()
-    kineticEnergyButton.place_forget()
-    # hide labels
-    equationsTitle.place_forget()
-    physicsTitle.place_forget()
+    def hideThermalEnergy():
+        thermalEnergyLabel.place_forget()
+        thermalEnergyEntry.place_forget()
+        thermalEnergyChangeLabel.place_forget()
+        thermalEnergyChangeEntry.place_forget()
+        thermalEnergyMassLabel.place_forget()
+        thermalEnergyMassEntry.place_forget()
+        thermalEnergyHeatCapacityLabel.place_forget()
+        thermalEnergyHeatCapacityEntry.place_forget()
+        thermalEnergyTemperatureChangeLabel.place_forget()
+        thermalEnergyTemperatureChangeEntry.place_forget()
+        thermalEnergyCalculateButton.place_forget()
 
-def thermalEnergy():
-    hideEquationMenu()
-    thermalEnergyTitle.place
-    thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
-    thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
-    thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
-    thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
-    thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
-    thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+    def thermalEnergyCalculate():
+        thermal = thermalEnergyChangeEntry.get()
+        if thermal:
+            thermal = float(thermal)
+        mass = thermalEnergyMassEntry.get()
+        if mass:
+            mass = float(mass)
+        heatCapacity = thermalEnergyHeatCapacityEntry.get()
+        if heatCapacity:
+            heatCapacity = float(heatCapacity)
+        temperatureChange = thermalEnergyTemperatureChangeEntry.get()
+        if temperatureChange:
+            temperatureChange = float(temperatureChange)
+        if thermal and mass and heatCapacity:
+            thermalEnergyTemperatureChangeEntry.delete(0, tk.END)
+            thermalEnergyTemperatureChangeEntry.insert(0, str(thermal / (mass * heatCapacity)))
+        elif thermal and mass and temperatureChange:
+            thermalEnergyHeatCapacityEntry.delete(0, tk.END)
+            thermalEnergyHeatCapacityEntry.insert(0, str(thermal / (mass * temperatureChange)))
+        elif thermal and heatCapacity and temperatureChange:
+            thermalEnergyMassEntry.delete(0, tk.END)
+            thermalEnergyMassEntry.insert(0, str(thermal / (heatCapacity * temperatureChange)))
+            thermalEnergyChangeEntry.delete(0, tk.END)
+            thermalEnergyChangeEntry.insert(0, str(mass * heatCapacity * temperatureChange))
 
-def hideThermalEnergy():
-    thermalEnergyLabel.place_forget()
-    thermalEnergyEntry.place_forget()
-    thermalEnergyChangeLabel.place_forget()
-    thermalEnergyChangeEntry.place_forget()
-    thermalEnergyMassLabel.place_forget()
-    thermalEnergyMassEntry.place_forget()
-    thermalEnergyHeatCapacityLabel.place_forget()
-    thermalEnergyHeatCapacityEntry.place_forget()
-    thermalEnergyTemperatureChangeLabel.place_forget()
-    thermalEnergyTemperatureChangeEntry.place_forget()
-    thermalEnergyCalculateButton.place_forget()
+    def kineticEnergy():
+        hideEquationMenu()
+        kineticEnergyTitle.place(y = 50, x = 250, anchor = "n")
+        kineticEnergyLabel.place(y = 120, x = 20, anchor = "w")
+        kineticEnergyEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
+        kineticEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
+        kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
+        kineticEnergyVelocityLabel.place(y = 200, x = 35, anchor = "w")
+        kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
+        kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+        
+    def hideKineticEnergy():
+        kineticEnergyTitle.place_forget
+        kineticEnergyLabel.place_forget
+        kineticEnergyEntry.place_forget
+        kineticEnergyMassLabel.place_forget
+        kineticEnergyMassEntry.place_forget
+        kineticEnergyVelocityLabel.place_forget
+        kineticEnergyVelocityEntry.place_forget
+        kineticEnergyCalculateButton.place_forget
 
-def thermalEnergyCalculate():
-    thermal = thermalEnergyChangeEntry.get()
-    if thermal:
-        thermal = float(thermal)
-    mass = thermalEnergyMassEntry.get()
-    if mass:
-        mass = float(mass)
-    heatCapacity = thermalEnergyHeatCapacityEntry.get()
-    if heatCapacity:
-        heatCapacity = float(heatCapacity)
-    temperatureChange = thermalEnergyTemperatureChangeEntry.get()
-    if temperatureChange:
-        temperatureChange = float(temperatureChange)
-    if thermal and mass and heatCapacity:
-        thermalEnergyTemperatureChangeEntry.delete(0, tk.END)
-        thermalEnergyTemperatureChangeEntry.insert(0, str(thermal / (mass * heatCapacity)))
-    elif thermal and mass and temperatureChange:
-        thermalEnergyHeatCapacityEntry.delete(0, tk.END)
-        thermalEnergyHeatCapacityEntry.insert(0, str(thermal / (mass * temperatureChange)))
-    elif thermal and heatCapacity and temperatureChange:
-        thermalEnergyMassEntry.delete(0, tk.END)
-        thermalEnergyMassEntry.insert(0, str(thermal / (heatCapacity * temperatureChange)))
-        thermalEnergyChangeEntry.delete(0, tk.END)
-        thermalEnergyChangeEntry.insert(0, str(mass * heatCapacity * temperatureChange))
+    def kineticEnergyCalculate():
+        kinetic = kineticEnergyEntry.get()
+        if kinetic:
+            kinetic = float(kinetic)
+        mass = kineticEnergyMassEntry.get()
+        if mass:
+            mass = float(mass)
+        heatCapacity = kineticEnergyHeatCapacityEntry.get()
+        if heatCapacity:
+            heatCapacity = float(heatCapacity)
+        temperatureChange = kineticEnergyTemperatureChangeEntry.get()
+        if temperatureChange:
+            temperatureChange = float(temperatureChange)
 
-def kineticEnergy():
-    hideEquationMenu()
-    kineticEnergyTitle.place(y = 50, x = 250, anchor = "n")
-    kineticEnergyLabel.place(y = 120, x = 20, anchor = "w")
-    kineticEnergyEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
-    kineticEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
-    kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
-    kineticEnergyVelocityLabel.place(y = 200, x = 35, anchor = "w")
-    kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
-    kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
+if True: # Game Boy Emulator
+    def gameboyEmulatorRun():
+        pyboy = PyBoy('ROMs/PokemonRed.gb')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+        
+
+    def gbemu():
+        pokemonButton.place(x = 250, y = 50, width = 490, height = 80, anchor = "n")
+
+    def hideGbemu():
+        pokemonHide()
     
-def hideKineticEnergy():
-    kineticEnergyTitle.place_forget
-    kineticEnergyLabel.place_forget
-    kineticEnergyEntry.place_forget
-    kineticEnergyMassLabel.place_forget
-    kineticEnergyMassEntry.place_forget
-    kineticEnergyVelocityLabel.place_forget
-    kineticEnergyVelocityEntry.place_forget
-    kineticEnergyCalculateButton.place_forget
+    def pokemonShow():
+        pokemonBlueButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
+        pokemonGreenButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
+        pokemonRedButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
+        pokemonYellowButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
+        pokemonGoldButton.place(x = 5, y = 173.75, width = 490, height = buttonHeight)
+        pokemonSilverButton.place(x = 5, y = 297.5, width = 490, height = buttonHeight)
+        pokemonButton.place_forget()
+    
+    def pokemonHide():
+        pokemonButton.place_forget()
+        pokemonBlueButton.place_forget()
+        pokemonGreenButton.place_forget()
+        pokemonRedButton.place_forget()
+        pokemonYellowButton.place_forget()
+        pokemonGoldButton.place_forget()
+        pokemonSilverButton.place_forget()
 
-def kineticEnergyCalculate():
-    kinetic = kineticEnergyEntry.get()
-    if kinetic:
-        kinetic = float(kinetic)
-    mass = kineticEnergyMassEntry.get()
-    if mass:
-        mass = float(mass)
-    heatCapacity = kineticEnergyHeatCapacityEntry.get()
-    if heatCapacity:
-        heatCapacity = float(heatCapacity)
-    temperatureChange = kineticEnergyTemperatureChangeEntry.get()
-    if temperatureChange:
-        temperatureChange = float(temperatureChange)
+    def pokemonBlue():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonBlue.gb')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+    def pokemonGreen():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonGreen.gb')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+    def pokemonRed():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonRed.gb')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+    def pokemonYellow():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonYellow.gb')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+    def pokemonGold():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonGold.gbc')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
+    def pokemonSilver():
+        pyboy = PyBoy('ROMs/Pokemon/PokemonSilver.gbc')
+        while not pyboy.tick():
+            pass
+            root.withdraw()
 
 
 if True: #Home Screen
@@ -328,29 +388,8 @@ if True: #Home Screen
     button8 = tk.Button(frame, text="button8", bg=mColour, font="60", command=lambda: button("button8"))
     button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
 
-    button9 = tk.Button(frame, text="button9", bg=mColour, font="60", command=lambda: button("button9"))
-    button9.place(x="5", y="252.5", width=buttonWidth, height=buttonHeight)
-
-    button10 = tk.Button(frame, text="button10", bg=mColour, font="60", command=lambda: button("button10"))
-    button10.place(x="128.75", y="252.5", width=buttonWidth, height=buttonHeight)
-
-    button11 = tk.Button(frame, text="button11", bg=mColour, font="60", command=lambda: button("button11"))
-    button11.place(x="252.5", y="252.5", width=buttonWidth, height=buttonHeight)
-
-    button12 = tk.Button(frame, text="button12", bg=mColour, font="60", command=lambda: button("button12"))
-    button12.place(x="376.25", y="252.5", width=buttonWidth, height=buttonHeight)
-
-    button13 = tk.Button(frame, text="button13", bg=mColour, font="60", command=lambda: button("button13"))
-    button13.place(x="5", y="376.25", width=buttonWidth, height=buttonHeight)
-
-    button14 = tk.Button(frame, text="button14", bg=mColour, font="60", command=lambda: button("button14"))
-    button14.place(x="128.75", y="376.25", width=buttonWidth, height=buttonHeight)
-
-    button15 = tk.Button(frame, text="button15", bg=mColour, font="60", command=lambda: button("button15"))
-    button15.place(x="252.5", y="376.25", width=buttonWidth, height=buttonHeight)
-
-    button16 = tk.Button(frame, text="button16", bg=mColour, font="60", command=lambda: button("button16"))
-    button16.place(x="376.25", y="376.25", width=buttonWidth, height=buttonHeight)
+    gameboyEmulatorButton = tk.Button(frame, text="GameBoy Emulator", bg="grey", font="60, 50", command=lambda: button("gbemu"), justify = 'center', wraplength = '490', image=gbImage)
+    gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
 
     backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
 
@@ -363,9 +402,19 @@ if True: ### Internal Buttons
         kineticEnergyCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: kineticEnergyCalculate())
     
     if True: # Trig Buttons
-
         trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: trigCalculate())
         trigResetButton = tk.Button(root, text="Reset", bg=bColour, font="60", command=lambda: trigReset())
+
+    if True: # Emulator Buttons
+        if True: # Pokemon
+            pokemonButton = tk.Button(root, text = "Pokémon", font="60, 50", bg = "grey", command=lambda: pokemonShow(), justify = "center", wraplength = '400', image=pokemonImage)
+            
+            pokemonBlueButton = tk.Button(root, text = "Blue", font="60, 20", bg = "blue", command=lambda: pokemonBlue(), justify = "center", wraplength = '118.75')
+            pokemonGreenButton = tk.Button(root, text = "Green", font="60, 20", bg = "green", command=lambda: pokemonGreen(), justify = "center", wraplength = '118.75')
+            pokemonRedButton = tk.Button(root, text = "Red", font="60, 20", bg = "red", command=lambda: pokemonRed(), justify = "center", wraplength = '118.75')
+            pokemonYellowButton = tk.Button(root, text = "Yellow", font="60, 20", bg = "yellow", command=lambda: pokemonYellow(), justify = "center", wraplength = '118.75')
+            pokemonGoldButton = tk.Button(root, text = "Gold", font="60, 20", bg = "gold", command=lambda: pokemonGold(), justify = "center", wraplength = '118.75')
+            pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "silver", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75')
 
 
 #end
