@@ -106,10 +106,7 @@ if True: # Trigonometry
         θ = trigEntryθ.get()
         if θ:
             θ = float(θ)
-        # print(a, type(a))
-        # print(b, type(b))
-        # print(c, type(c))
-        # print(θ, type(θ))
+        
         if θ >= 90:
             trigErrorLabel.place(y = 300, x = 250, width = 490, height = 200, anchor = 'n')
         if a and b:
@@ -318,9 +315,11 @@ if True: # Game Boy Emulator
 
     def gbemu():
         pokemonButton.place(x = 250, y = 50, width = 490, height = 80, anchor = "n")
+        otherButton.place(x = 250, y = 135, width = 490, height = 80, anchor = "n")
 
     def hideGbemu():
         pokemonHide()
+        otherhide()
     
     if True: # Pokémon
         def pokemonShow():
@@ -341,6 +340,7 @@ if True: # Game Boy Emulator
             pokemonYellowButton.place_forget()
             pokemonGoldButton.place_forget()
             pokemonSilverButton.place_forget()
+            pokemonPinballButton.place_forget()
 
         def pokemonBlue():
             pyboy = PyBoy('ROMs/Pokemon/PokemonBlue.gb')
@@ -374,6 +374,92 @@ if True: # Game Boy Emulator
                 root.withdraw()
         def pokemonPinball():
             pyboy = PyBoy('ROMs/Pokemon/PokemonPinball.gbc')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+
+    if True: #Other Games
+
+        def otherShow():
+            pokemonHide()
+            otherButton.place_forget()
+            zeldalinksawakeningButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
+            tetrisButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
+            donkeykongButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
+            pacmanButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
+            supermariolandButton.place(x = 5, y = 173.75, width = buttonWidth, height = buttonHeight)
+            amazingspidermand2Button.place(x = 128.75, y = 173.75, width = buttonWidth, height = buttonHeight)
+            mortalkombatButton.place(x = 252.5, y = 173.75, width = buttonWidth, height = buttonHeight)
+            kirbydreamlandButton.place(x = 376.25, y = 173.75, width = buttonWidth, height = buttonHeight)
+            bombblisButton.place(x = 5, y = 297.5, width = buttonWidth, height = buttonHeight)
+            marioland4Button.place(x = 128.75, y = 297.5, width = buttonWidth, height = buttonHeight)
+            snakeyButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
+        
+        def otherhide():
+            tetrisButton.place_forget()
+            kirbydreamlandButton.place_forget()
+            donkeykongButton.place_forget()
+            pacmanButton.place_forget()
+            supermariolandButton.place_forget()
+            zeldalinksawakeningButton.place_forget()
+            amazingspidermand2Button.place_forget()
+            mortalkombatButton.place_forget()
+            bombblisButton.place_forget()
+            marioland4Button.place_forget()
+            snakeyButton.place_forget()
+        
+        def tetris():
+            pyboy = PyBoy('ROMs/other/Tetris.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def kirby():
+            pyboy = PyBoy('ROMs/other/KirbysDreamLand.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def donkeykong():
+            pyboy = PyBoy('ROMs/other/DonkeyKongLand.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def pacman():
+            pyboy = PyBoy('ROMs/other/Pac-Man.gbc')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def supermarioland():
+            pyboy = PyBoy('ROMs/other/SuperMarioLand.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def zelda():
+            pyboy = PyBoy('ROMs/other/LegendofZeldaLinksAwakening.gbc')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def spiderman():
+            pyboy = PyBoy('ROMs/other/AmazingSpiderMan2.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def mortalkombat():
+            pyboy = PyBoy('ROMs/other/MortalKombat.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def bombliss():
+            pyboy = PyBoy('ROMs/other/SuperBombliss.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def supermarioland4():
+            pyboy = PyBoy('ROMs/other/SuperMarioLand4.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def snakey():
+            pyboy = PyBoy('ROMs/other/SuperSnakey.gb')
             while not pyboy.tick():
                 pass
                 root.withdraw()
@@ -432,6 +518,20 @@ if True: ### Internal Buttons
             pokemonGoldButton = tk.Button(root, text = "Gold", font="60, 20", bg = "gold", command=lambda: pokemonGold(), justify = "center", wraplength = '118.75')
             pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "silver", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75')
             pokemonPinballButton = tk.Button(root, text = "Pinball", font="60, 20", bg = "pink", command=lambda: pokemonPinball(), justify = "center", wraplength = '118.75')
+        if True: # other games buttons
+            otherButton = tk.Button(root, text = "Other", font="60, 50", bg = "grey", command=lambda: otherShow(), justify = "center", wraplength = '400')
+
+            tetrisButton = tk.Button(root, text = "Tetris", font="60, 20", bg = "grey", command=lambda: tetris(), justify = "center", wraplength = '118.75')
+            kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75')
+            donkeykongButton = tk.Button(root, text = "Donkey Kong Land", font="60, 20", bg = "grey", command=lambda: donkeykong(), justify = "center", wraplength = '118.75')
+            pacmanButton = tk.Button(root, text = "Pac-Man", font="60, 20", bg = "grey", command=lambda: pacman(), justify = "center", wraplength = '118.75')
+            supermariolandButton = tk.Button(root, text = "Super Mario Land", font="60, 20", bg = "grey", command=lambda: supermarioland(), justify = "center", wraplength = '118.75')
+            amazingspidermand2Button = tk.Button(root, text = "Amazing Spiderman 2", font="60, 18", bg = "grey", command=lambda: spiderman(), justify = "center", wraplength = '118.75')
+            mortalkombatButton = tk.Button(root, text = "Mortal Kombat", font="60, 20", bg = "grey", command=lambda: mortalkombat(), justify = "center", wraplength = '118.75')
+            bombblisButton= tk.Button(root, text = "Super Bombliss", font="60, 20", bg = "grey", command=lambda: bombliss(), justify = "center", wraplength = '118.75')
+            marioland4Button = tk.Button(root, text = "Super Mario Land 4", font="60, 20", bg = "grey", command=lambda: supermarioland4(), justify = "center", wraplength = '118.75')
+            snakeyButton = tk.Button(root, text = "Super Snakey", font="60, 20", bg = "grey", command=lambda: snakey(), justify = "center", wraplength = '118.75')
+            zeldalinksawakeningButton = tk.Button(root, text = "The Ledgend of Zelda: Link's Awakening", font="60, 15", bg = "grey", command=lambda: zelda(), justify = "center", wraplength = '118.75')
 
 
 #end
