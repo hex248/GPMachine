@@ -3,6 +3,7 @@ if True: # Imports and global variables
     import os
     import math
     import time
+    os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
     import pygame
     import random
     from tkinter import messagebox
@@ -24,27 +25,29 @@ if True: # Imports and global variables
     root.title("GPMachine")
     icon = tk.PhotoImage(file = "./icons/GPicon.png")
     root.iconphoto(False, icon)
+
     gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
-    pokemonImage = tk.PhotoImage(file = "./images/pokemonWallpaper1.png")
-    pokeblueImage = tk.PhotoImage(file = "./images/pokeblueImage.png")
-    pokegreenImage = tk.PhotoImage(file = "./images/pokegreenImage.png")
-    pokeredImage = tk.PhotoImage(file = "./images/pokeredImage.png")
-    pokeyellowImage = tk.PhotoImage(file = "./images/pokeyellowImage.png")
-    pokegoldImage = tk.PhotoImage(file = "./images/pokegoldImage.png")
-    pokesilverImage = tk.PhotoImage(file = "./images/pokesilverImage.png")
-    pokepinballImage = tk.PhotoImage(file = "./images/pokepinballImage.png")
-    otherImage = tk.PhotoImage(file = "./images/otherWallpaper.png")
-    # tetrisImage = tk.PhotoImage(file = "./images/tetrisImage.png")
-    # kirbyImage = tk.PhotoImage(file = "./images/kirbyImage.png")
-    # donkeykongImage = tk.PhotoImage(file = "./images/donkeykongImage.png")
-    # pacmanImage = tk.PhotoImage(file = "./images/pacmanImage.png")
-    # supermarioImage = tk.PhotoImage(file = "./images/supermarioImage.png")
-    # spidermanImage = tk.PhotoImage(file = "./images/spidermanImage.png")
-    # mortalkombatImage = tk.PhotoImage(file = "./images/mortalkombatImage.png")
-    # bomblisImage = tk.PhotoImage(file = "./images/bomblisImage.png")
-    # supermario4Image = tk.PhotoImage(file = "./images/supermario4Image.png")
-    # snakeyImage = tk.PhotoImage(file = "./images/snakeyImage.png")
-    # zeldaImage = tk.PhotoImage(file = "./images/zeldaImage.png")
+    pokemonImage = tk.PhotoImage(file = "./images/pokemon/pokemonWallpaper1.png")
+    otherImage = tk.PhotoImage(file = "./images/other/otherWallpaper.png")
+
+    pokeblueImage = tk.PhotoImage(file = "./images/pokemon/pokeblueImage.png")
+    pokegreenImage = tk.PhotoImage(file = "./images/pokemon/pokegreenImage.png")
+    pokeredImage = tk.PhotoImage(file = "./images/pokemon/pokeredImage.png")
+    pokeyellowImage = tk.PhotoImage(file = "./images/pokemon/pokeyellowImage.png")
+    pokegoldImage = tk.PhotoImage(file = "./images/pokemon/pokegoldImage.png")
+    pokesilverImage = tk.PhotoImage(file = "./images/pokemon/pokesilverImage.png")
+    pokepinballImage = tk.PhotoImage(file = "./images/pokemon/pokepinballImage.png")
+    tetrisImage = tk.PhotoImage(file = "./images/other/tetrisImage.png")
+    kirbyImage = tk.PhotoImage(file = "./images/other/kirbyImage.png")
+    donkeykongImage = tk.PhotoImage(file = "./images/other/donkeykongImage.png")
+    pacmanImage = tk.PhotoImage(file = "./images/other/pacmanImage.png")
+    supermarioImage = tk.PhotoImage(file = "./images/other/supermarioImage.png")
+    spidermanImage = tk.PhotoImage(file = "./images/other/spidermanImage.png")
+    mortalkombatImage = tk.PhotoImage(file = "./images/other/mortalkombatImage.png")
+    bomblissImage = tk.PhotoImage(file = "./images/other/bomblissImage.png")
+    supermario4Image = tk.PhotoImage(file = "./images/other/supermario4Image.png")
+    snakeyImage = tk.PhotoImage(file = "./images/other/snakeyImage.png")
+    zeldaImage = tk.PhotoImage(file = "./images/other/zeldaImage.png")
 
 
 
@@ -368,15 +371,8 @@ def snakerun():
                 pygame.draw.circle(surface, (0,0,0), circleMiddle, radius)
                 pygame.draw.circle(surface, (0,0,0), circleMiddle2, radius)
 
-
-
-
 class snake(object):
     pass
-
-
-
-
 
 if True: # Game Boy Emulator
     def gameboyEmulatorRun():
@@ -587,27 +583,27 @@ if True: ### Internal Buttons
         if True: # Pokémon
             pokemonButton = tk.Button(root, text = "Pokémon", font="60, 50", bg = "grey", command=lambda: pokemonShow(), justify = "center", wraplength = '400', image=pokemonImage)
             
-            pokemonBlueButton = tk.Button(root, text = "Blue", font="60, 20", bg = "blue", command=lambda: pokemonBlue(), justify = "center", wraplength = '118.75', image=pokeblueImage)
-            pokemonGreenButton = tk.Button(root, text = "Green", font="60, 20", bg = "green", command=lambda: pokemonGreen(), justify = "center", wraplength = '118.75', image=pokegreenImage)
-            pokemonRedButton = tk.Button(root, text = "Red", font="60, 20", bg = "red", command=lambda: pokemonRed(), justify = "center", wraplength = '118.75', image=pokeredImage)
-            pokemonYellowButton = tk.Button(root, text = "Yellow", font="60, 20", bg = "yellow", command=lambda: pokemonYellow(), justify = "center", wraplength = '118.75', image=pokeyellowImage)
-            pokemonGoldButton = tk.Button(root, text = "Gold", font="60, 20", bg = "gold", command=lambda: pokemonGold(), justify = "center", wraplength = '118.75', image=pokegoldImage)
-            pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "silver", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75', image=pokesilverImage)
-            pokemonPinballButton = tk.Button(root, text = "Pinball", font="60, 20", bg = "pink", command=lambda: pokemonPinball(), justify = "center", wraplength = '118.75', image=pokepinballImage)
+            pokemonBlueButton = tk.Button(root, text = "Blue", font="60, 20", bg = "grey", command=lambda: pokemonBlue(), justify = "center", wraplength = '118.75', image=pokeblueImage)
+            pokemonGreenButton = tk.Button(root, text = "Green", font="60, 20", bg = "grey", command=lambda: pokemonGreen(), justify = "center", wraplength = '118.75', image=pokegreenImage)
+            pokemonRedButton = tk.Button(root, text = "Red", font="60, 20", bg = "grey", command=lambda: pokemonRed(), justify = "center", wraplength = '118.75', image=pokeredImage)
+            pokemonYellowButton = tk.Button(root, text = "Yellow", font="60, 20", bg = "grey", command=lambda: pokemonYellow(), justify = "center", wraplength = '118.75', image=pokeyellowImage)
+            pokemonGoldButton = tk.Button(root, text = "Gold", font="60, 20", bg = "grey", command=lambda: pokemonGold(), justify = "center", wraplength = '118.75', image=pokegoldImage)
+            pokemonSilverButton = tk.Button(root, text = "Silver", font="60, 20", bg = "grey", command=lambda: pokemonSilver(), justify = "center", wraplength = '118.75', image=pokesilverImage)
+            pokemonPinballButton = tk.Button(root, text = "Pinball", font="60, 20", bg = "grey", command=lambda: pokemonPinball(), justify = "center", wraplength = '118.75', image=pokepinballImage)
         if True: # other games buttons
             otherButton = tk.Button(root, text = "Other", font="60, 50", bg = "grey", command=lambda: otherShow(), justify = "center", wraplength = '400', image=otherImage)
 
-            tetrisButton = tk.Button(root, text = "Tetris", font="60, 20", bg = "grey", command=lambda: tetris(), justify = "center", wraplength = '118.75')
-            kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75')
-            donkeykongButton = tk.Button(root, text = "Donkey Kong Land", font="60, 20", bg = "grey", command=lambda: donkeykong(), justify = "center", wraplength = '118.75')
-            pacmanButton = tk.Button(root, text = "Pac-Man", font="60, 20", bg = "grey", command=lambda: pacman(), justify = "center", wraplength = '118.75')
-            supermariolandButton = tk.Button(root, text = "Super Mario Land", font="60, 20", bg = "grey", command=lambda: supermarioland(), justify = "center", wraplength = '118.75')
-            amazingspidermand2Button = tk.Button(root, text = "Amazing Spiderman 2", font="60, 18", bg = "grey", command=lambda: spiderman(), justify = "center", wraplength = '118.75')
-            mortalkombatButton = tk.Button(root, text = "Mortal Kombat", font="60, 20", bg = "grey", command=lambda: mortalkombat(), justify = "center", wraplength = '118.75')
-            bombblisButton= tk.Button(root, text = "Super Bombliss", font="60, 20", bg = "grey", command=lambda: bombliss(), justify = "center", wraplength = '118.75')
-            marioland4Button = tk.Button(root, text = "Super Mario Land 4", font="60, 20", bg = "grey", command=lambda: supermarioland4(), justify = "center", wraplength = '118.75')
-            snakeyButton = tk.Button(root, text = "Super Snakey", font="60, 20", bg = "grey", command=lambda: snakey(), justify = "center", wraplength = '118.75')
-            zeldalinksawakeningButton = tk.Button(root, text = "The Ledgend of Zelda: Link's Awakening", font="60, 15", bg = "grey", command=lambda: zelda(), justify = "center", wraplength = '118.75')
+            tetrisButton = tk.Button(root, text = "Tetris", font="60, 20", bg = "grey", command=lambda: tetris(), justify = "center", wraplength = '118.75', image=tetrisImage)
+            kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75', image=kirbyImage)
+            donkeykongButton = tk.Button(root, text = "Donkey Kong Land", font="60, 20", bg = "grey", command=lambda: donkeykong(), justify = "center", wraplength = '118.75', image=donkeykongImage)
+            pacmanButton = tk.Button(root, text = "Pac-Man", font="60, 20", bg = "grey", command=lambda: pacman(), justify = "center", wraplength = '118.75', image=pacmanImage)
+            supermariolandButton = tk.Button(root, text = "Super Mario Land", font="60, 20", bg = "grey", command=lambda: supermarioland(), justify = "center", wraplength = '118.75', image=supermarioImage)
+            amazingspidermand2Button = tk.Button(root, text = "Amazing Spiderman 2", font="60, 18", bg = "grey", command=lambda: spiderman(), justify = "center", wraplength = '118.75', image=spidermanImage)
+            mortalkombatButton = tk.Button(root, text = "Mortal Kombat", font="60, 20", bg = "grey", command=lambda: mortalkombat(), justify = "center", wraplength = '118.75', image=mortalkombatImage)
+            bombblisButton= tk.Button(root, text = "Super Bombliss", font="60, 20", bg = "grey", command=lambda: bombliss(), justify = "center", wraplength = '118.75', image=bomblissImage)
+            marioland4Button = tk.Button(root, text = "Super Mario Land 4", font="60, 20", bg = "grey", command=lambda: supermarioland4(), justify = "center", wraplength = '118.75', image=supermario4Image)
+            snakeyButton = tk.Button(root, text = "Super Snakey", font="60, 20", bg = "grey", command=lambda: snakey(), justify = "center", wraplength = '118.75', image=snakeyImage)
+            zeldalinksawakeningButton = tk.Button(root, text = "The Ledgend of Zelda: Link's Awakening", font="60, 15", bg = "grey", command=lambda: zelda(), justify = "center", wraplength = '118.75', image=zeldaImage)
 
 
 #end
