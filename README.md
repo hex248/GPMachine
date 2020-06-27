@@ -2,13 +2,13 @@
 A general pupose program built to fulfill random needs.\
 <img src="icons/GPicon.png" width="100"/>
 ## Features:
-Trigonometry Calculator
+### Trigonometry Calculator
 - Missing angle
 - Missing side
 - Diagram for reference
-Combined Science Equations
+### Combined Science Equations
 - Most useful for GSCE students\
-Gameboy Emulator
+### Gameboy Emulator
 - Pokemon games including:
   - Blue
   - Green
@@ -27,7 +27,7 @@ Gameboy Emulator
   - Super Mario Land 4
   - Simpsons
   - Tamagotchi
-- More Soon!
+### More Soon!
 
 > Built with Python.\
 > Developed by [hex](https://twitter.com/hexyuu) and [t4t45](http://tommypriest.com).
