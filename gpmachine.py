@@ -403,11 +403,11 @@ if True: # Game Boy Emulator
         elif game == "yellow":
             pyboy = PyBoy('ROMs/Pokemon/PokemonYellow.gb')
         elif game == "gold":
-            pyboy = PyBoy('ROMs/Pokemon/PokemonGold.gb')
+            pyboy = PyBoy('ROMs/Pokemon/PokemonGold.gbc')
         elif game == "silver":
-            pyboy = PyBoy('ROMs/Pokemon/PokemonSilver.gb')
+            pyboy = PyBoy('ROMs/Pokemon/PokemonSilver.gbc')
         elif game == "pinball":
-            pyboy = PyBoy('ROMs/Pokemon/PokemonPinball.gb')
+            pyboy = PyBoy('ROMs/Pokemon/PokemonPinball.gbc')
         elif game == "zelda":
             pyboy = PyBoy('ROMs/other/LegendofZeldaLinksAwakening.gbc')
         elif game == "tetris":
@@ -415,7 +415,7 @@ if True: # Game Boy Emulator
         elif game == "donkeykong":
             pyboy = PyBoy('ROMs/other/DonkeyKongLand.gb')
         elif game == "pacman":
-            pyboy = PyBoy('ROMs/other/Pac-Man.gb')
+            pyboy = PyBoy('ROMs/other/Pac-Man.gbc')
         elif game == "mario":
             pyboy = PyBoy('ROMs/other/SuperMarioLand.gb')
         elif game == "spiderman":
