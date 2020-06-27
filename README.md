@@ -4,7 +4,7 @@ A general pupose program built to fulfill random needs.\
 ## Features:
 ### Trigonometry Calculator
 - Missing angle
-- Missing side
+- Missing sides
 - Diagram for reference
 ### Combined Science Equations
 - Most useful for GSCE students\
