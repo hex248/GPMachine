@@ -7,7 +7,7 @@ Trigonometry Calculator
 - Missing side
 - Diagram for reference
 Combined Science Equations
-- Most useful for GSCE students
+- Most useful for GSCE students\
 Gameboy Emulator
 - Pokemon games including:
   - Blue
