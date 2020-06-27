@@ -29,7 +29,7 @@ if True: # Imports and global variables
     gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
     pokemonImage = tk.PhotoImage(file = "./images/pokemon/pokemonWallpaper1.png")
     otherImage = tk.PhotoImage(file = "./images/other/otherWallpaper.png")
-
+    # Pokemon images
     pokeblueImage = tk.PhotoImage(file = "./images/pokemon/pokeblueImage.png")
     pokegreenImage = tk.PhotoImage(file = "./images/pokemon/pokegreenImage.png")
     pokeredImage = tk.PhotoImage(file = "./images/pokemon/pokeredImage.png")
@@ -37,17 +37,20 @@ if True: # Imports and global variables
     pokegoldImage = tk.PhotoImage(file = "./images/pokemon/pokegoldImage.png")
     pokesilverImage = tk.PhotoImage(file = "./images/pokemon/pokesilverImage.png")
     pokepinballImage = tk.PhotoImage(file = "./images/pokemon/pokepinballImage.png")
+    # Other games images
+    zeldaImage = tk.PhotoImage(file = "./images/other/zeldaImage.png")
     tetrisImage = tk.PhotoImage(file = "./images/other/tetrisImage.png")
-    kirbyImage = tk.PhotoImage(file = "./images/other/kirbyImage.png")
     donkeykongImage = tk.PhotoImage(file = "./images/other/donkeykongImage.png")
     pacmanImage = tk.PhotoImage(file = "./images/other/pacmanImage.png")
     supermarioImage = tk.PhotoImage(file = "./images/other/supermarioImage.png")
     spidermanImage = tk.PhotoImage(file = "./images/other/spidermanImage.png")
-    mortalkombatImage = tk.PhotoImage(file = "./images/other/mortalkombatImage.png")
+    snakeyImage = tk.PhotoImage(file = "./images/other/snakeyImage.png")
+    kirbyImage = tk.PhotoImage(file = "./images/other/kirbyImage.png")
     bomblissImage = tk.PhotoImage(file = "./images/other/bomblissImage.png")
     supermario4Image = tk.PhotoImage(file = "./images/other/supermario4Image.png")
-    snakeyImage = tk.PhotoImage(file = "./images/other/snakeyImage.png")
-    zeldaImage = tk.PhotoImage(file = "./images/other/zeldaImage.png")
+    simpsonsImage = tk.PhotoImage(file = "./images/other/simpsonsImage.png")
+    tamagotchiImage = tk.PhotoImage(file = "./images/other/tamagotchiImage.png")
+
 
 
 
@@ -459,34 +462,36 @@ if True: # Game Boy Emulator
             pacmanButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
             supermariolandButton.place(x = 5, y = 173.75, width = buttonWidth, height = buttonHeight)
             amazingspidermand2Button.place(x = 128.75, y = 173.75, width = buttonWidth, height = buttonHeight)
-            mortalkombatButton.place(x = 252.5, y = 173.75, width = buttonWidth, height = buttonHeight)
+            snakeyButton.place(x = 252.5, y = 173.75, width = buttonWidth, height = buttonHeight)
             kirbydreamlandButton.place(x = 376.25, y = 173.75, width = buttonWidth, height = buttonHeight)
             bombblisButton.place(x = 5, y = 297.5, width = buttonWidth, height = buttonHeight)
             marioland4Button.place(x = 128.75, y = 297.5, width = buttonWidth, height = buttonHeight)
-            snakeyButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
+            simpsonsButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
+            tamagotchiButton.place(x = 376.25, y = 297.5, width = buttonWidth, height = buttonHeight)
         
         def otherhide():
             otherButton.place_forget()
 
+            zeldalinksawakeningButton.place_forget()
             tetrisButton.place_forget()
-            kirbydreamlandButton.place_forget()
             donkeykongButton.place_forget()
             pacmanButton.place_forget()
             supermariolandButton.place_forget()
-            zeldalinksawakeningButton.place_forget()
             amazingspidermand2Button.place_forget()
-            mortalkombatButton.place_forget()
+            snakeyButton.place_forget()
+            kirbydreamlandButton.place_forget()
             bombblisButton.place_forget()
             marioland4Button.place_forget()
-            snakeyButton.place_forget()
+            simpsonsButton.place_forget()
+            tamagotchiButton.place_forget()
         
-        def tetris():
-            pyboy = PyBoy('ROMs/other/Tetris.gb')
+        def zelda():
+            pyboy = PyBoy('ROMs/other/LegendofZeldaLinksAwakening.gbc')
             while not pyboy.tick():
                 pass
                 root.withdraw()
-        def kirby():
-            pyboy = PyBoy('ROMs/other/KirbysDreamLand.gb')
+        def tetris():
+            pyboy = PyBoy('ROMs/other/Tetris.gb')
             while not pyboy.tick():
                 pass
                 root.withdraw()
@@ -505,18 +510,18 @@ if True: # Game Boy Emulator
             while not pyboy.tick():
                 pass
                 root.withdraw()
-        def zelda():
-            pyboy = PyBoy('ROMs/other/LegendofZeldaLinksAwakening.gbc')
-            while not pyboy.tick():
-                pass
-                root.withdraw()
         def spiderman():
             pyboy = PyBoy('ROMs/other/AmazingSpiderMan2.gb')
             while not pyboy.tick():
                 pass
                 root.withdraw()
-        def mortalkombat():
-            pyboy = PyBoy('ROMs/other/MortalKombat.gb')
+        def snakey():
+            pyboy = PyBoy('ROMs/other/SuperSnakey.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def kirby():
+            pyboy = PyBoy('ROMs/other/KirbysDreamLand.gb')
             while not pyboy.tick():
                 pass
                 root.withdraw()
@@ -530,8 +535,13 @@ if True: # Game Boy Emulator
             while not pyboy.tick():
                 pass
                 root.withdraw()
-        def snakey():
-            pyboy = PyBoy('ROMs/other/SuperSnakey.gb')
+        def simpsons():
+            pyboy = PyBoy('ROMs/other/Simpsons.gb')
+            while not pyboy.tick():
+                pass
+                root.withdraw()
+        def tamagotchi():
+            pyboy = PyBoy('ROMs/other/Tamagotchi.gb')
             while not pyboy.tick():
                 pass
                 root.withdraw()
@@ -593,17 +603,18 @@ if True: ### Internal Buttons
         if True: # other games buttons
             otherButton = tk.Button(root, text = "Other", font="60, 50", bg = "grey", command=lambda: otherShow(), justify = "center", wraplength = '400', image=otherImage)
 
+            zeldalinksawakeningButton = tk.Button(root, text = "The Ledgend of Zelda: Link's Awakening", font="60, 15", bg = "grey", command=lambda: zelda(), justify = "center", wraplength = '118.75', image=zeldaImage)
             tetrisButton = tk.Button(root, text = "Tetris", font="60, 20", bg = "grey", command=lambda: tetris(), justify = "center", wraplength = '118.75', image=tetrisImage)
-            kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75', image=kirbyImage)
             donkeykongButton = tk.Button(root, text = "Donkey Kong Land", font="60, 20", bg = "grey", command=lambda: donkeykong(), justify = "center", wraplength = '118.75', image=donkeykongImage)
             pacmanButton = tk.Button(root, text = "Pac-Man", font="60, 20", bg = "grey", command=lambda: pacman(), justify = "center", wraplength = '118.75', image=pacmanImage)
             supermariolandButton = tk.Button(root, text = "Super Mario Land", font="60, 20", bg = "grey", command=lambda: supermarioland(), justify = "center", wraplength = '118.75', image=supermarioImage)
             amazingspidermand2Button = tk.Button(root, text = "Amazing Spiderman 2", font="60, 18", bg = "grey", command=lambda: spiderman(), justify = "center", wraplength = '118.75', image=spidermanImage)
-            mortalkombatButton = tk.Button(root, text = "Mortal Kombat", font="60, 20", bg = "grey", command=lambda: mortalkombat(), justify = "center", wraplength = '118.75', image=mortalkombatImage)
+            snakeyButton = tk.Button(root, text = "Super Snakey", font="60, 20", bg = "grey", command=lambda: snakey(), justify = "center", wraplength = '118.75', image=snakeyImage)
+            kirbydreamlandButton = tk.Button(root, text = "Kirby's Dream Land", font="60, 20", bg = "grey", command=lambda: kirby(), justify = "center", wraplength = '118.75', image=kirbyImage)
             bombblisButton= tk.Button(root, text = "Super Bombliss", font="60, 20", bg = "grey", command=lambda: bombliss(), justify = "center", wraplength = '118.75', image=bomblissImage)
             marioland4Button = tk.Button(root, text = "Super Mario Land 4", font="60, 20", bg = "grey", command=lambda: supermarioland4(), justify = "center", wraplength = '118.75', image=supermario4Image)
-            snakeyButton = tk.Button(root, text = "Super Snakey", font="60, 20", bg = "grey", command=lambda: snakey(), justify = "center", wraplength = '118.75', image=snakeyImage)
-            zeldalinksawakeningButton = tk.Button(root, text = "The Ledgend of Zelda: Link's Awakening", font="60, 15", bg = "grey", command=lambda: zelda(), justify = "center", wraplength = '118.75', image=zeldaImage)
+            simpsonsButton = tk.Button(root, text = "Simpons", font="60, 20", bg = "grey", command=lambda: simpsons(), justify = "center", wraplength = '118.75', image=simpsonsImage)
+            tamagotchiButton = tk.Button(root, text = "Tamagotchi", font="60, 20", bg = "grey", command=lambda: tamagotchi(), justify = "center", wraplength = '118.75', image=tamagotchiImage)
 
 
 #end
