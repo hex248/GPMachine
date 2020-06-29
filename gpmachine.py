@@ -435,7 +435,6 @@ if True: # Game Boy Emulator
             while not pyboy.tick():
                 pass
                 root.withdraw()
-        
     
     if True: # Pokémon
         def pokemonShow():
