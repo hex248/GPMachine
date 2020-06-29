@@ -53,9 +53,6 @@ if True: # Imports and global variables
     simpsonsImage = tk.PhotoImage(file = "./images/other/simpsonsImage.png")
     tamagotchiImage = tk.PhotoImage(file = "./images/other/tamagotchiImage.png")
 
-
-
-
 def button(value):
     # print("Button Pressed:", value)
     trigonometryButton.place_forget()
@@ -375,7 +372,6 @@ def snakerun():
                 circleMiddle2 = (i*dis + dis -radius*2, j*dis+8)
                 pygame.draw.circle(surface, (0,0,0), circleMiddle, radius)
                 pygame.draw.circle(surface, (0,0,0), circleMiddle2, radius)
-
 class snake(object):
     pass
 
@@ -565,6 +561,4 @@ if True: ### Internal Buttons
             simpsonsButton = tk.Button(root, text = "Simpons", font="60, 20", bg = "grey", command=lambda: game("simpsons"), justify = "center", wraplength = '118.75', image=simpsonsImage)
             tamagotchiButton = tk.Button(root, text = "Tamagotchi", font="60, 20", bg = "grey", command=lambda: game("tamagotchi"), justify = "center", wraplength = '118.75', image=tamagotchiImage)
 
-
-#end
 root.mainloop()
