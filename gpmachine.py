@@ -26,6 +26,9 @@ if True: # Imports and global variables
     icon = tk.PhotoImage(file = "./icons/GPicon.png")
     root.iconphoto(False, icon)
 
+    # Menu images
+    trigImageBig = tk.PhotoImage(file = "./images/trigBig.png")
+    # Emulator images
     gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
     pokemonImage = tk.PhotoImage(file = "./images/pokemon/pokemonWallpaper1.png")
     otherImage = tk.PhotoImage(file = "./images/other/otherWallpaper.png")
@@ -107,7 +110,7 @@ def Reset():
 if True: # Trigonometry
 
     if True: # Trigonometry elements
-        trigImage = tk.PhotoImage(file ='trig.png')
+        trigImage = tk.PhotoImage(file ='./images/trig.png')
         trigLabel = tk.Label(root, image = trigImage)
         trigLabelA = tk.Label(font = '60', text = 'A', fg = 'black', bg = 'grey')
         trigLabelB = tk.Label(font = '60', text = 'B', fg = 'black', bg = 'grey')
@@ -491,7 +494,7 @@ if True: # Game Boy Emulator
             tamagotchiButton.place_forget()
 
 if True: #Home Screen
-    trigonometryButton = tk.Button(frame, text="Trigonometry", bg=mColour, font="60", command=lambda: button("trigonometry"))
+    trigonometryButton = tk.Button(frame, text="Trigonometry", bg="grey", font="60", command=lambda: button("trigonometry"), image=trigImageBig)
     trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
 
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
