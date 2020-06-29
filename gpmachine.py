@@ -2,6 +2,8 @@ if True: # Imports and global variables
     import tkinter as tk
     import os
     import math
+
+    \
     import time
     os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
     import pygame
