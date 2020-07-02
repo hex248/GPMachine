@@ -3,24 +3,20 @@ if True: # Imports and global variables
     import os
     import math
     import time
-    os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-    import pygame
     import random
     from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
-    canvasWidth = 500
-    canvasHeight = 500
-    buttonWidth = 118.75
-    buttonHeight = 118.75
-    canvasWidth = 500
-    canvasHeight = 500
-    emuButtonWidth = 490
-    emuButtonHeight = 242.5
+    canvasWidth = 800
+    canvasHeight = 800
+    buttonWidth = 0.2375
+    buttonHeight = 0.2375
+    emuButtonWidth = 0.98
+    emuButtonHeight = 0.485
     mColour = "#36b3ac"
     bColour = "#b52126"
     gColour = "#808080"
-    canvas = tk.Canvas(root, height=canvasHeight, width=canvasWidth)
+    canvas = tk.Canvas(root, height = canvasHeight, width = canvasWidth)
     canvas.pack()
     root.title("GPMachine")
     icon = tk.PhotoImage(file = "./icons/GPicon.png")
@@ -66,10 +62,10 @@ def button(value):
     button8.place_forget()
     gameboyEmulatorButton.place_forget()
     hideGbemu()
-    backButton.place(x="5", y="5")
+    backButton.place(relx = 0.01, rely = 0.01)
 
     if value == "back":
-        home()
+        back()
     if value == "trigonometry":
         trig()
     if value == "equation":
@@ -77,20 +73,20 @@ def button(value):
     if value == "gbemu":
         gbemu()
 
-def home():
+def back():
     backButton.place_forget()
     hideTrig()
     hideEquations()
     hideGbemu()
-    trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
-    equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
-    snakerunbutton.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
-    button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
-    button5.place(x="5", y="128.75", width=buttonWidth, height=buttonHeight)
-    button6.place(x="128.75", y="128.75", width=buttonWidth, height=buttonHeight)
-    button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
-    button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
-    gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
+    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    snakerunbutton.place(relx = 0.505, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    button4.place(relx = 0.7525, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    button5.place(relx = 0.01, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    button6.place(relx = 0.2575, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    button7.place(relx = 0.505, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    button8.place(relx = 0.7525, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -126,16 +122,16 @@ if True: # Trigonometry
 
     def trig():
         trigLabel.place(relwidth=1, relheight = 1, relx = 0.5, anchor="n", rely = 0)
-        trigLabelA.place(y = 100, x = 40)
-        trigLabelB.place(y = 120, x = 40)
-        trigLabelC.place(y = 140, x = 40)
-        trigLabelθ.place(y = 160, x = 40)
-        trigEntryA.place(y = 100, x = 80, width = 80, height = 20)
-        trigEntryB.place(y = 120, x = 80, width = 80, height = 20)
-        trigEntryC.place(y = 140, x = 80, width = 80, height = 20)
-        trigEntryθ.place(y = 160, x = 80, width = 80, height = 20)
-        ResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
-        trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
+        trigLabelA.place(rely = 0.2, relx = 0.08)
+        trigLabelB.place(rely = 0.24,relx = 0.08)
+        trigLabelC.place(rely = 0.28,relx = 0.08)
+        trigLabelθ.place(rely = 0.32,relx = 0.08)
+        trigEntryA.place(rely = 0.2, relx = 0.16, relwidth = 0.16, relheight = 0.04)
+        trigEntryB.place(rely = 0.24, relx = 0.16, relwidth = 0.16, relheight = 0.04)
+        trigEntryC.place(rely = 0.28, relx = 0.16, relwidth = 0.16, relheight = 0.04)
+        trigEntryθ.place(rely = 0.32, relx = 0.16, relwidth = 0.16, relheight = 0.04)
+        ResetButton.place(rely = 0.49, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
+        trigCalculateButton.place(rely = 0.4, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         frame.place_forget()
 
     def trigCalculate():
@@ -154,7 +150,7 @@ if True: # Trigonometry
             θ = float(θ)
         
         if θ >= 90:
-            trigErrorLabel.place(y = 300, x = 250, width = 490, height = 200, anchor = 'n')
+            trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
         if a and b:
             trigEntryC.delete(0, tk.END)
             trigEntryC.insert(0, str(math.hypot(a, b)))
@@ -231,10 +227,10 @@ if True: # Equations
         kineticEnergyVelocityEntry = tk.Entry(font = ("Arial", "10"))
 
     def equations():
-        equationsTitle.place(y = 10, x = 250, anchor = "n")
-        physicsTitle.place(y = 80, x = 125, anchor = "n")
-        thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
-        kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
+        equationsTitle.place(rely = 0.02, relx = 0.5, anchor = "n")
+        physicsTitle.place(rely = 0.16, relx = 0.25, anchor = "n")
+        thermalEnergyButton.place(rely = 0.24, relx = 0.25, anchor = "n")
+        kineticEnergyButton.place(rely = 0.32, relx = 0.25, anchor = "n")
 
     def hideEquations():
         hideEquationMenu()
@@ -252,16 +248,16 @@ if True: # Equations
     def thermalEnergy():
         hideEquationMenu()
         thermalEnergyTitle.place
-        thermalEnergyChangeLabel.place(y = 120, x = 20, anchor = "w")
-        thermalEnergyChangeEntry.place(y = 120, x = 285, anchor = "w", width = 45, height = 20)
-        thermalEnergyMassLabel.place(y = 160, x = 210, anchor = "w")
-        thermalEnergyMassEntry.place(y = 160, x = 285, anchor = "w", width = 45, height = 20)
-        thermalEnergyHeatCapacityLabel.place(y = 200, x = 35, anchor = "w")
-        thermalEnergyHeatCapacityEntry.place(y = 200, x = 285, anchor = "w", width = 45, height = 20)
-        thermalEnergyTemperatureChangeLabel.place(y = 240, x = 95, anchor = "w")
-        thermalEnergyTemperatureChangeEntry.place(y = 240, x = 285, anchor = "w", width = 45, height = 20)
-        thermalEnergyCalculateButton.place(y = 280, x = 285, anchor = "w", width = 90, height = 20)
-        ResetButton.place(y = 325, x = 285, width = 70, height = 40, anchor = 'w')
+        thermalEnergyChangeLabel.place(rely = 0.24, relx = 0.04, anchor = "w")
+        thermalEnergyChangeEntry.place(rely = 0.24, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyMassLabel.place(rely = 0.32, relx = 0.42, anchor = "w")
+        thermalEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyHeatCapacityLabel.place(rely = 0.4, relx = 0.07, anchor = "w")
+        thermalEnergyHeatCapacityEntry.place(rely = 0.4, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyTemperatureChangeLabel.place(rely = 0.48, relx = 0.19, anchor = "w")
+        thermalEnergyTemperatureChangeEntry.place(rely = 0.48, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "w", relwidth = 90, relheight = 20)
+        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 70, relheight = 40, anchor = 'w')
 
     def hideThermalEnergy():
         thermalEnergyLabel.place_forget()
@@ -303,15 +299,15 @@ if True: # Equations
 
     def kineticEnergy():
         hideEquationMenu()
-        ResetButton.place(y = 325, x = 285, width = 70, height = 40, anchor = 'n')
-        kineticEnergyTitle.place(y = 30, x = 250, anchor = "n")
-        kineticEnergyLabel.place(y = 120, x = 205, anchor = "n")
-        kineticEnergyEntry.place(y = 120, x = 285, anchor = "n", width = 45, height = 20)
-        kineticEnergyMassLabel.place(y = 157, x = 238, anchor = "n")
-        kineticEnergyMassEntry.place(y = 160, x = 285, anchor = "n", width = 45, height = 20)
-        kineticEnergyVelocityLabel.place(y = 197, x = 228, anchor = "n")
-        kineticEnergyVelocityEntry.place(y = 200, x = 285, anchor = "n", width = 45, height = 20)
-        kineticEnergyCalculateButton.place(y = 280, x = 285, anchor = "n", width = 90, height = 20)
+        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 70, relheight = 40, anchor = 'n')
+        kineticEnergyTitle.place(rely = 0.06, relx = 0.5, anchor = "n")
+        kineticEnergyLabel.place(rely = 0.24, relx = 0.41, anchor = "n")
+        kineticEnergyEntry.place(rely = 0.24, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
+        kineticEnergyMassLabel.place(rely = 0.314, relx = 0.476, anchor = "n")
+        kineticEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
+        kineticEnergyVelocityLabel.place(rely = 0.394, relx = 0.456, anchor = "n")
+        kineticEnergyVelocityEntry.place(rely = 0.4, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
+        kineticEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "n", relwidth = 90, relheight = 20)
 
     def hideKineticEnergy():
         kineticEnergyTitle.place_forget()
@@ -344,54 +340,21 @@ if True: # Equations
             kineticEnergyEntry.delete(0, tk.END)
             kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
 
-def snakerun():
-    class cube(object):
-        rows = 20
-        w = 500
-        def __init__(self,start,dirnx=1,dirny=0,color=(255,0,0)):
-            self.pos = start
-            self.dirnx = 1
-            self.dirny = 0
-            self.color = color
-
-
-        def move(self, dirnx, dirny):
-            self.dirnx = dirnx
-            self.dirny = dirny
-            self.pos = (self.pos[0] + self.dirnx, self.pos[1] + self.dirny)
-
-        def draw(self, surface, eyes=False):
-            dis = self.w // self.rows
-            i = self.pos[0]
-            j = self.pos[1]
-
-            pygame.draw.rect(surface, self.color, (i*dis+1,j*dis+1, dis-2, dis-2))
-            if eyes:
-                centre = dis//2
-                radius = 3
-                circleMiddle = (i*dis+centre-radius,j*dis+8)
-                circleMiddle2 = (i*dis + dis -radius*2, j*dis+8)
-                pygame.draw.circle(surface, (0,0,0), circleMiddle, radius)
-                pygame.draw.circle(surface, (0,0,0), circleMiddle2, radius)
-class snake(object):
-    pass
-
 if True: # Game Boy Emulator
     def gameboyEmulatorRun():
         pyboy = PyBoy('ROMs/PokemonRed.gb')
         while not pyboy.tick():
             pass
             root.withdraw()
-        
 
     def gbemu():
-        pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
-        otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
+        pokemonButton.place(relx = 0.5, rely = 0.1, relwidth = 0.98, relheight = 0.4, anchor = "n")
+        otherButton.place(relx = 0.5, rely = 0.51, relwidth = 0.98, relheight = 0.4, anchor = "n")
 
     def hideGbemu():
         pokemonHide()
         otherhide()
-    
+
     def game(game):
         if game == "blue":
             pyboy = PyBoy('ROMs/Pokemon/PokemonBlue.gb')
@@ -435,16 +398,16 @@ if True: # Game Boy Emulator
             while not pyboy.tick():
                 pass
                 root.withdraw()
-    
+
     if True: # Pokémon
         def pokemonShow():
-            pokemonBlueButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
-            pokemonGreenButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
-            pokemonRedButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
-            pokemonYellowButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
-            pokemonGoldButton.place(x = 5, y = 173.75, width = 490, height = 100)
-            pokemonSilverButton.place(x = 5, y = 278.75, width = 490, height = 100)
-            pokemonPinballButton.place(x = 5, y = 383.75, width = 490, height = 100)
+            pokemonBlueButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            pokemonGreenButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            pokemonRedButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            pokemonYellowButton.place(relx = 0.7525, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            pokemonGoldButton.place(relx = 0.01, rely = 0.3475, relwidth = 0.98, relheight = 0.2)
+            pokemonSilverButton.place(relx = 0.01, rely = 0.5575, relwidth = 0.98, relheight = 0.2)
+            pokemonPinballButton.place(relx = 0.01, rely = 0.7675, relwidth = 0.98, relheight = 0.2)
             pokemonButton.place_forget()
             otherButton.place_forget()
         
@@ -458,23 +421,23 @@ if True: # Game Boy Emulator
             pokemonSilverButton.place_forget()
             pokemonPinballButton.place_forget()
 
-    if True: #Other Games
+    if True: # Other Games
 
         def otherShow():
             pokemonButton.place_forget()
             otherButton.place_forget()
-            zeldalinksawakeningButton.place(x = 5, y = 50, width = buttonWidth, height = buttonHeight)
-            tetrisButton.place(x = 128.75, y = 50, width = buttonWidth, height = buttonHeight)
-            donkeykongButton.place(x = 252.5, y = 50, width = buttonWidth, height = buttonHeight)
-            pacmanButton.place(x = 376.25, y = 50, width = buttonWidth, height = buttonHeight)
-            supermariolandButton.place(x = 5, y = 173.75, width = buttonWidth, height = buttonHeight)
-            amazingspidermand2Button.place(x = 128.75, y = 173.75, width = buttonWidth, height = buttonHeight)
-            snakeyButton.place(x = 252.5, y = 173.75, width = buttonWidth, height = buttonHeight)
-            kirbydreamlandButton.place(x = 376.25, y = 173.75, width = buttonWidth, height = buttonHeight)
-            bombblisButton.place(x = 5, y = 297.5, width = buttonWidth, height = buttonHeight)
-            marioland4Button.place(x = 128.75, y = 297.5, width = buttonWidth, height = buttonHeight)
-            simpsonsButton.place(x = 252.5, y = 297.5, width = buttonWidth, height = buttonHeight)
-            tamagotchiButton.place(x = 376.25, y = 297.5, width = buttonWidth, height = buttonHeight)
+            zeldalinksawakeningButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            tetrisButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            donkeykongButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            pacmanButton.place(relx = 0.7525, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+            supermariolandButton.place(relx = 0.01, rely = 0.3475, relwidth = buttonWidth, relheight = buttonHeight)
+            amazingspidermand2Button.place(relx = 0.2575, rely = 0.3475, relwidth = buttonWidth, relheight = buttonHeight)
+            snakeyButton.place(relx = 0.505, rely = 0.3475, relwidth = buttonWidth, relheight = buttonHeight)
+            kirbydreamlandButton.place(relx = 0.7525, rely = 0.3475, relwidth = buttonWidth, relheight = buttonHeight)
+            bombblisButton.place(relx = 0.01, rely = 0.595, relwidth = buttonWidth, relheight = buttonHeight)
+            marioland4Button.place(relx = 0.2575, rely = 0.595, relwidth = buttonWidth, relheight = buttonHeight)
+            simpsonsButton.place(relx = 0.505, rely = 0.595, relwidth = buttonWidth, relheight = buttonHeight)
+            tamagotchiButton.place(relx = 0.7525, rely = 0.595, relwidth = buttonWidth, relheight = buttonHeight)
         
         def otherhide():
             otherButton.place_forget()
@@ -492,33 +455,33 @@ if True: # Game Boy Emulator
             simpsonsButton.place_forget()
             tamagotchiButton.place_forget()
 
-if True: #Home Screen
+if True: # Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg="grey", font="60", command=lambda: button("trigonometry"), image=trigImageBig)
-    trigonometryButton.place(x="5", y="5", width=buttonWidth, height=buttonHeight)
+    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
-    equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
+    equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
-    snakerunbutton = tk.Button(frame, text="Snake", bg=mColour, font="60",command=lambda: snakerun())
-    snakerunbutton.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    snakerunbutton = tk.Button(frame, text="Snake", bg=mColour, font="60")
+    snakerunbutton.place(relx = 0.505, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
-    button4.place(x="376.25", y="5", width=buttonWidth, height=buttonHeight)
+    button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
 
     button5 = tk.Button(frame, text="button5", bg=mColour, font="60", command=lambda: button("button5"))
-    button5.place(x="5", y="128.75", width=buttonWidth, height=buttonHeight)
+    button5.place(relx = 0.01, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
 
     button6 = tk.Button(frame, text="button6", bg=mColour, font="60", command=lambda: button("button6"))
-    button6.place(x="128.75", y="128.75", width=buttonWidth, height=buttonHeight)
+    button6.place(relx = 0.2575, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
 
     button7 = tk.Button(frame, text="button7", bg=mColour, font="60", command=lambda: button("button7"))
-    button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
+    button7.place(relx = 0.505, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
 
     button8 = tk.Button(frame, text="button8", bg=mColour, font="60", command=lambda: button("button8"))
-    button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
+    button8.place(relx = 0.7525, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
 
     gameboyEmulatorButton = tk.Button(frame, text="GameBoy Emulator", bg="grey", font="60, 50", command=lambda: button("gbemu"), justify = 'center', wraplength = '490', image=gbImage)
-    gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
+    gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
 
     backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
 
