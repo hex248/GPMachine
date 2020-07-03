@@ -65,18 +65,19 @@ def button(value):
     button8.place_forget()
     gameboyEmulatorButton.place_forget()
     hideGbemu()
-    backButton.place(x="5", y="5")
 
     if value == "back":
-        home()
+        back()
     if value == "trigonometry":
         trig()
     if value == "equation":
         equations()
     if value == "gbemu":
         gbemu()
+    if value == "backgame":
+        backgame()
 
-def home():
+def back():
     backButton.place_forget()
     hideTrig()
     hideEquations()
@@ -90,6 +91,12 @@ def home():
     button7.place(x="252.5", y="128.75", width=buttonWidth, height=buttonHeight)
     button8.place(x="376.25", y="128.75", width=buttonWidth, height=buttonHeight)
     gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
+
+def backgame():
+    pokemonHide()
+    otherhide()
+    gbemu()
+
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -136,6 +143,7 @@ if True: # Trigonometry
         ResetButton.place(y = 245, x = 120, width = 70, height = 40, anchor = 'n')
         trigCalculateButton.place(y = 200, x = 120, width = 70, height = 40, anchor = 'n')
         frame.place_forget()
+        backButton.place(x="5", y="5")
 
     def trigCalculate():
         trigErrorLabel.place_forget()
@@ -234,6 +242,7 @@ if True: # Equations
         physicsTitle.place(y = 80, x = 125, anchor = "n")
         thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
         kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
+        backButton.place(x="5", y="5")
 
     def hideEquations():
         hideEquationMenu()
@@ -386,6 +395,7 @@ if True: # Game Boy Emulator
     def gbemu():
         pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
         otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
+        backButton.place(x="5", y="5")
 
     def hideGbemu():
         pokemonHide()
@@ -499,7 +509,7 @@ if True: #Home Screen
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
     equationButton.place(x="128.75", y="5", width=buttonWidth, height=buttonHeight)
 
-    snakerunbutton = tk.Button(frame, text="Snake", bg=mColour, font="60",command=lambda: snakerun())
+    snakerunbutton = tk.Button(frame, text="button3", bg=mColour, font="60",command=lambda: snakerun())
     snakerunbutton.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
@@ -520,9 +530,12 @@ if True: #Home Screen
     gameboyEmulatorButton = tk.Button(frame, text="GameBoy Emulator", bg="grey", font="60, 50", command=lambda: button("gbemu"), justify = 'center', wraplength = '490', image=gbImage)
     gameboyEmulatorButton.place(x="5", y="252.5", width=emuButtonWidth, height=emuButtonHeight)
 
-    backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
-
 if True: ### Internal Buttons
+
+    if True: #Back button
+            backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
+            backgame = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backgame"))
+            backscience = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backscience"))
     
     if True: # Equation Buttons
         thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
