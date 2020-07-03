@@ -142,7 +142,7 @@ if True: # Trigonometry
         ResetButton.place(rely = 0.49, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         trigCalculateButton.place(rely = 0.4, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         frame.place_forget()
-        backButton.place(x="5", y="5")
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def trigCalculate():
         trigErrorLabel.place_forget()
@@ -241,7 +241,7 @@ if True: # Equations
         physicsTitle.place(y = 80, x = 125, anchor = "n")
         thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
         kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
-        backButton.place(x="5", y="5")
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def hideEquations():
         hideEquationMenu()
@@ -359,9 +359,9 @@ if True: # Game Boy Emulator
             root.withdraw()
 
     def gbemu():
-        pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
-        otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
-        backButton.place(x="5", y="5")
+        pokemonButton.place(relx = 0.5, rely = 0.1, relwidth = 0.98, relheight = 0.4, anchor = "n")
+        otherButton.place(relx = 0.5, rely = 0.51, relwidth = 0.98, relheight = 0.4, anchor = "n")
+        backButton.place(relx = 0.01, y = 0.01)
 
     def hideGbemu():
         pokemonHide()
@@ -475,7 +475,7 @@ if True: # Home Screen
     equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
     button3 = tk.Button(frame, text="button3", bg=mColour, font="60",command=lambda:button3())
-    button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    button3.place(relx = 0.505, rely = 0.01, relidth=buttonWidth, relheight=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
     button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
