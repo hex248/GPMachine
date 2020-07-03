@@ -361,7 +361,7 @@ if True: # Game Boy Emulator
     def gbemu():
         pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
         otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
-        backButton.place(x="5", y="5")
+        backButton.place(relx="0.1", rely="0.1")
 
     def hideGbemu():
         pokemonHide()
@@ -422,6 +422,7 @@ if True: # Game Boy Emulator
             pokemonPinballButton.place(relx = 0.01, rely = 0.7675, relwidth = 0.98, relheight = 0.2)
             pokemonButton.place_forget()
             otherButton.place_forget()
+            backgame.place(relx = 0.1, rely =  0.1)
         
         def pokemonHide():
             pokemonButton.place_forget()
