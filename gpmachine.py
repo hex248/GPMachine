@@ -95,6 +95,7 @@ def backgame():
     pokemonHide()
     otherhide()
     gbemu()
+    backgame.place_forget()
 
 
 def Reset():
@@ -142,7 +143,7 @@ if True: # Trigonometry
         ResetButton.place(rely = 0.49, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         trigCalculateButton.place(rely = 0.4, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         frame.place_forget()
-        backButton.place(x="5", y="5")
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def trigCalculate():
         trigErrorLabel.place_forget()
@@ -241,7 +242,7 @@ if True: # Equations
         physicsTitle.place(y = 80, x = 125, anchor = "n")
         thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
         kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
-        backButton.place(x="5", y="5")
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def hideEquations():
         hideEquationMenu()
@@ -422,7 +423,7 @@ if True: # Game Boy Emulator
             pokemonPinballButton.place(relx = 0.01, rely = 0.7675, relwidth = 0.98, relheight = 0.2)
             pokemonButton.place_forget()
             otherButton.place_forget()
-            backgame.place(relx = 0.1, rely =  0.1)
+            backgame.place(relx = 0.1, rely =  0.1, relwidth = 0.06, relheight = 0.06)
         
         def pokemonHide():
             pokemonButton.place_forget()
@@ -439,6 +440,7 @@ if True: # Game Boy Emulator
         def otherShow():
             pokemonButton.place_forget()
             otherButton.place_forget()
+            backgame.place(relx = 0.1, rely =  0.1)
             zeldalinksawakeningButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             tetrisButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             donkeykongButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
@@ -476,7 +478,7 @@ if True: # Home Screen
     equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
     button3 = tk.Button(frame, text="button3", bg=mColour, font="60",command=lambda:button3())
-    button3.place(x="252.5", y="5", width=buttonWidth, height=buttonHeight)
+    button3.place(relx = 0.505, rely = 0.01, relwidth=buttonWidth, relheight=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
     button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
@@ -499,9 +501,9 @@ if True: # Home Screen
 if True: ### Internal Buttons
 
     if True: #Back button
-            backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
-            backgame = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backgame"))
-            backscience = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backscience"))
+            backButton = tk.Button(root, text="Back", bg="red", font="60", command=lambda: button("back"))
+            backgame = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: button("backgame"))
+            backscience = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: button("backscience"))
     
     if True: # Equation Buttons
         thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
