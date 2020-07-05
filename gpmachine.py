@@ -94,6 +94,7 @@ def backgame():
     pokemonHide()
     otherhide()
     gbemu()
+    backgame.place_forget()
 
 
 def Reset():
@@ -358,9 +359,9 @@ if True: # Game Boy Emulator
             root.withdraw()
 
     def gbemu():
-        pokemonButton.place(relx = 0.5, rely = 0.1, relwidth = 0.98, relheight = 0.4, anchor = "n")
-        otherButton.place(relx = 0.5, rely = 0.51, relwidth = 0.98, relheight = 0.4, anchor = "n")
-        backButton.place(relx = 0.01, y = 0.01)
+        pokemonButton.place(x = 250, y = 50, width = 490, height = 200, anchor = "n")
+        otherButton.place(x = 250, y = 255, width = 490, height = 200, anchor = "n")
+        backButton.place(relx="0.1", rely="0.1")
 
     def hideGbemu():
         pokemonHide()
@@ -421,6 +422,7 @@ if True: # Game Boy Emulator
             pokemonPinballButton.place(relx = 0.01, rely = 0.7675, relwidth = 0.98, relheight = 0.2)
             pokemonButton.place_forget()
             otherButton.place_forget()
+            backgame.place(relx = 0.1, rely =  0.1, relwidth = 0.06, relheight = 0.06)
         
         def pokemonHide():
             pokemonButton.place_forget()
@@ -437,6 +439,7 @@ if True: # Game Boy Emulator
         def otherShow():
             pokemonButton.place_forget()
             otherButton.place_forget()
+            backgame.place(relx = 0.1, rely =  0.1)
             zeldalinksawakeningButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             tetrisButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             donkeykongButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
@@ -497,9 +500,9 @@ if True: # Home Screen
 if True: ### Internal Buttons
 
     if True: #Back button
-            backButton = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("back"))
-            backgame = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backgame"))
-            backscience = tk.Button(root, text="Back", bg=bColour, font="60", command=lambda: button("backscience"))
+            backButton = tk.Button(root, text="Back", bg="red", font="60", command=lambda: button("back"))
+            backgame = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: button("backgame"))
+            backscience = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: button("backscience"))
     
     if True: # Equation Buttons
         thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
