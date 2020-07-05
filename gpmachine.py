@@ -3,7 +3,6 @@ if True: # Imports and global variables
     import os
     import math
 
-    \
     import time
     import random
     from tkinter import messagebox
@@ -475,7 +474,7 @@ if True: # Home Screen
     equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
     button3 = tk.Button(frame, text="button3", bg=mColour, font="60",command=lambda:button3())
-    button3.place(relx = 0.505, rely = 0.01, relidth=buttonWidth, relheight=buttonHeight)
+    button3.place(relx = 0.505, rely = 0.01, relwidth=buttonWidth, relheight=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
     button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
