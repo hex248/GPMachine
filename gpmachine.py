@@ -8,8 +8,8 @@ if True: # Imports and global variables
     from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
-    canvasWidth = 800
-    canvasHeight = 800
+    canvasWidth = 500
+    canvasHeight = 500
     buttonWidth = 0.2375
     buttonHeight = 0.2375
     emuButtonWidth = 0.98
@@ -92,8 +92,7 @@ def backgame():
     pokemonHide()
     otherhide()
     gbemu()
-    backgame.place_forget()
-
+    backgameButton.place_forget()
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -214,7 +213,7 @@ if True: # Equations
         equationsTitle = tk.Label(font = ("Arial", "30"), text = "Equations", fg = "black", bg = "grey")
         physicsTitle = tk.Label(font = ("Arial", "20"), text = "Physics", fg = "black", bg = "grey")
         # thermal elements
-        thermalEnergyTitle = tk.Label(font = ("Arial", "50"), text = "Change in Thermal Energy", fg = "black", bg = "grey")
+        thermalEnergyTitle = tk.Label(font = ("Arial", "30"), text = "Change in Thermal Energy", fg = "black", bg = "grey")
         thermalEnergyLabel = tk.Label(font = ("Arial", "20"), text = "Change in thermal energy", fg = "black", bg = "grey")
         thermalEnergyEntry = tk.Entry(font = ("Arial", "20"), )
         thermalEnergyChangeLabel = tk.Label(font = ("Arial", "13"), text = "Change in thermal energy (Joules):", fg = "black", bg = "grey")
@@ -233,6 +232,12 @@ if True: # Equations
         kineticEnergyMassEntry = tk.Entry(font = ("Arial", "10"))
         kineticEnergyVelocityLabel = tk.Label(font = ("Arial", "13"), text = "Velocity:", fg = "black", bg = "grey")
         kineticEnergyVelocityEntry = tk.Entry(font = ("Arial", "10"))
+
+    def backscience():
+        hideThermalEnergy()
+        hideKineticEnergy()
+        equations()
+        backscienceButton.place_forget()
 
     def equations():
         equationsTitle.place(y = 10, x = 250, anchor = "n")
@@ -255,20 +260,24 @@ if True: # Equations
         physicsTitle.place_forget()
 
     def thermalEnergy():
-        hideEquationMenu()
-        thermalEnergyTitle.place
+        thermalEnergyTitle.place(relx = 0.5, rely = 0.08, anchor = "n")
         thermalEnergyChangeLabel.place(rely = 0.24, relx = 0.04, anchor = "w")
-        thermalEnergyChangeEntry.place(rely = 0.24, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyChangeEntry.place(rely = 0.24, relx = 0.57, anchor = "w", relwidth = 0.09, relheight = 0.04)
         thermalEnergyMassLabel.place(rely = 0.32, relx = 0.42, anchor = "w")
-        thermalEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "w", relwidth = 0.09, relheight = 0.04)
         thermalEnergyHeatCapacityLabel.place(rely = 0.4, relx = 0.07, anchor = "w")
-        thermalEnergyHeatCapacityEntry.place(rely = 0.4, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
+        thermalEnergyHeatCapacityEntry.place(rely = 0.4, relx = 0.57, anchor = "w", relwidth = 0.09, relheight = 0.04)
         thermalEnergyTemperatureChangeLabel.place(rely = 0.48, relx = 0.19, anchor = "w")
-        thermalEnergyTemperatureChangeEntry.place(rely = 0.48, relx = 0.57, anchor = "w", relwidth = 45, relheight = 20)
-        thermalEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "w", relwidth = 90, relheight = 20)
-        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 70, relheight = 40, anchor = 'w')
+        thermalEnergyTemperatureChangeEntry.place(rely = 0.48, relx = 0.57, anchor = "w", relwidth = 0.09, relheight = 0.04)
+        thermalEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "w", relwidth = 0.18, relheight = 0.04)
+        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 0.14, relheight = 0.08, anchor = 'w')
+        backscienceButton.place(relx = 0.01, rely = 0.01)
+        backButton.place_forget()
+        hideEquationMenu()
 
     def hideThermalEnergy():
+        ResetButton.place_forget()
+        thermalEnergyTitle.place_forget()
         thermalEnergyLabel.place_forget()
         thermalEnergyEntry.place_forget()
         thermalEnergyChangeLabel.place_forget()
@@ -308,17 +317,20 @@ if True: # Equations
 
     def kineticEnergy():
         hideEquationMenu()
-        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 70, relheight = 40, anchor = 'n')
+        ResetButton.place(rely = 0.65, relx = 0.57, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         kineticEnergyTitle.place(rely = 0.06, relx = 0.5, anchor = "n")
         kineticEnergyLabel.place(rely = 0.24, relx = 0.41, anchor = "n")
-        kineticEnergyEntry.place(rely = 0.24, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
+        kineticEnergyEntry.place(rely = 0.24, relx = 0.57, anchor = "n", relwidth = 0.09, relheight = 0.04)
         kineticEnergyMassLabel.place(rely = 0.314, relx = 0.476, anchor = "n")
-        kineticEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
+        kineticEnergyMassEntry.place(rely = 0.32, relx = 0.57, anchor = "n", relwidth = 0.09, relheight = 0.04)
         kineticEnergyVelocityLabel.place(rely = 0.394, relx = 0.456, anchor = "n")
-        kineticEnergyVelocityEntry.place(rely = 0.4, relx = 0.57, anchor = "n", relwidth = 45, relheight = 20)
-        kineticEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "n", relwidth = 90, relheight = 20)
+        kineticEnergyVelocityEntry.place(rely = 0.4, relx = 0.57, anchor = "n", relwidth = 0.09, relheight = 0.04)
+        kineticEnergyCalculateButton.place(rely = 0.56, relx = 0.57, anchor = "n", relwidth = 0.18, relheight = 0.04)
+        backscienceButton.place(relx = 0.01, rely = 0.01)
+        backButton.place_forget()
 
     def hideKineticEnergy():
+        ResetButton.place_forget()
         kineticEnergyTitle.place_forget()
         kineticEnergyLabel.place_forget()
         kineticEnergyEntry.place_forget()
@@ -350,16 +362,11 @@ if True: # Equations
             kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
 
 if True: # Game Boy Emulator
-    def gameboyEmulatorRun():
-        pyboy = PyBoy('ROMs/PokemonRed.gb')
-        while not pyboy.tick():
-            pass
-            root.withdraw()
 
     def gbemu():
         pokemonButton.place(relx = 0.5, rely = 0.1, relwidth = 0.98, relheight = 0.4, anchor = "n")
         otherButton.place(relx = 0.5, rely = 0.51, relwidth = 0.98, relheight = 0.4, anchor = "n")
-        backButton.place(relx = 0.1, rely = 0.1)
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def hideGbemu():
         pokemonHide()
@@ -420,7 +427,8 @@ if True: # Game Boy Emulator
             pokemonPinballButton.place(relx = 0.01, rely = 0.7675, relwidth = 0.98, relheight = 0.2)
             pokemonButton.place_forget()
             otherButton.place_forget()
-            backgame.place(relx = 0.1, rely =  0.1)
+            backButton.place_forget()
+            backgameButton.place(relx = 0.01, rely = 0.01)
         
         def pokemonHide():
             pokemonButton.place_forget()
@@ -437,7 +445,7 @@ if True: # Game Boy Emulator
         def otherShow():
             pokemonButton.place_forget()
             otherButton.place_forget()
-            backgame.place(relx = 0.1, rely =  0.1, relwidth = 0.06, relheight = 0.06)
+            backgameButton.place(relx = 0.01, rely = 0.01)
             zeldalinksawakeningButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             tetrisButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             donkeykongButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
@@ -453,7 +461,6 @@ if True: # Game Boy Emulator
         
         def otherhide():
             otherButton.place_forget()
-
             zeldalinksawakeningButton.place_forget()
             tetrisButton.place_forget()
             donkeykongButton.place_forget()
@@ -497,10 +504,10 @@ if True: # Home Screen
 
 if True: ### Internal Buttons
 
-    if True: #Back button
-            backButton = tk.Button(frame, text="Back", bg=mColour, font="60", command=lambda: button("back"))
-            backgame = tk.Button(frame, text="Back", bg=mColour, font="60", command=lambda: backgame())
-            backscience = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: backscience())
+    if True: # Back button
+            backButton = tk.Button(root, text="Back", bg="red", font="60", command=lambda: button("back"))
+            backgameButton = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: backgame())
+            backscienceButton = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: backscience())
     
     if True: # Equation Buttons
         thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
