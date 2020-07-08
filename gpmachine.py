@@ -2,9 +2,9 @@ if True: # Imports and global variables
     import tkinter as tk
     import os
     import math
-
     import time
     import random
+    #from decimaltohex import decimalToHex
     from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
@@ -22,18 +22,17 @@ if True: # Imports and global variables
     root.title("GPMachine")
     icon = tk.PhotoImage(file = "./icons/GPicon.png")
     root.iconphoto(False, icon)
-
     # Menu images
-    trigImageBig = tk.PhotoImage(file = "./images/trigBig.png")
+    trigImageBig = tk.PhotoImage(file = "./images/trigBig.png") # Scaleable
     # Emulator images
-    gbImage = tk.PhotoImage(file = "./images/gameboyBackground1.png")
-    pokemonImage = tk.PhotoImage(file = "./images/pokemon/pokemonWallpaper1.png")
-    otherImage = tk.PhotoImage(file = "./images/other/otherWallpaper.png")
+    gbImage = tk.PhotoImage(file = "./images/gameboyBackground2.png") # Scaleable
+    pokemonImage = tk.PhotoImage(file = "./images/pokemon/pokemonWallpaper2.png") # Scaleable
+    otherImage = tk.PhotoImage(file = "./images/other/otherWallpaper2.png") # Scaleable
     # Pokemon images
-    pokeblueImage = tk.PhotoImage(file = "./images/pokemon/pokeblueImage.png")
-    pokegreenImage = tk.PhotoImage(file = "./images/pokemon/pokegreenImage.png")
-    pokeredImage = tk.PhotoImage(file = "./images/pokemon/pokeredImage.png")
-    pokeyellowImage = tk.PhotoImage(file = "./images/pokemon/pokeyellowImage.png")
+    pokeblueImage = tk.PhotoImage(file = "./images/pokemon/pokeblueImage.png") # Scaleable
+    pokegreenImage = tk.PhotoImage(file = "./images/pokemon/pokegreenImage.png") # Scaleable
+    pokeredImage = tk.PhotoImage(file = "./images/pokemon/pokeredImage.png") # Scaleable
+    pokeyellowImage = tk.PhotoImage(file = "./images/pokemon/pokeyellowImage.png") # Scaleable
     pokegoldImage = tk.PhotoImage(file = "./images/pokemon/pokegoldImage.png")
     pokesilverImage = tk.PhotoImage(file = "./images/pokemon/pokesilverImage.png")
     pokepinballImage = tk.PhotoImage(file = "./images/pokemon/pokepinballImage.png")
@@ -52,17 +51,16 @@ if True: # Imports and global variables
     tamagotchiImage = tk.PhotoImage(file = "./images/other/tamagotchiImage.png")
 
 def button(value):
-    # print("Button Pressed:", value)
+    backButton.place(relx = 0.01, rely = 0.01)
     trigonometryButton.place_forget()
     equationButton.place_forget()
-    button3.place_forget()
+    binaryConversionButton.place_forget()
     button4.place_forget()
     button5.place_forget()
     button6.place_forget()
     button7.place_forget()
     button8.place_forget()
     gameboyEmulatorButton.place_forget()
-    hideGbemu()
 
     if value == "back":
         back()
@@ -80,7 +78,7 @@ def back():
     hideGbemu()
     trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
     equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
-    button3.place(relx = 0.505, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
     button4.place(relx = 0.7525, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
     button5.place(relx = 0.01, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
     button6.place(relx = 0.2575, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
@@ -93,6 +91,7 @@ def backgame():
     otherhide()
     gbemu()
     backgameButton.place_forget()
+    button("")
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -139,7 +138,6 @@ if True: # Trigonometry
         ResetButton.place(rely = 0.49, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         trigCalculateButton.place(rely = 0.4, relx = 0.24, relwidth = 0.14, relheight = 0.08, anchor = 'n')
         frame.place_forget()
-        backButton.place(relx = 0.01, rely = 0.01)
 
     def trigCalculate():
         trigErrorLabel.place_forget()
@@ -156,8 +154,8 @@ if True: # Trigonometry
         if θ:
             θ = float(θ)
         
-        # if θ >= 90 and θ == float:
-        #     trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 0.98, relheight = 0.4, anchor = 'n')
+        if θ >= 90:
+            trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
         if a and b:
             trigEntryC.delete(0, tk.END)
             trigEntryC.insert(0, str(math.hypot(a, b)))
@@ -244,7 +242,6 @@ if True: # Equations
         physicsTitle.place(y = 80, x = 125, anchor = "n")
         thermalEnergyButton.place(y = 120, x = 125, anchor = "n")
         kineticEnergyButton.place(y = 160, x = 125, anchor = "n")
-        backButton.place(relx = 0.01, rely = 0.01)
 
     def hideEquations():
         hideEquationMenu()
@@ -366,11 +363,12 @@ if True: # Game Boy Emulator
     def gbemu():
         pokemonButton.place(relx = 0.5, rely = 0.1, relwidth = 0.98, relheight = 0.4, anchor = "n")
         otherButton.place(relx = 0.5, rely = 0.51, relwidth = 0.98, relheight = 0.4, anchor = "n")
-        backButton.place(relx = 0.01, rely = 0.01)
 
     def hideGbemu():
-        pokemonHide()
-        otherhide()
+        # pokemonHide()
+        # otherhide()
+        pokemonButton.place_forget()
+        otherButton.place_forget()
 
     def game(game):
         if game == "blue":
@@ -431,7 +429,7 @@ if True: # Game Boy Emulator
             backgameButton.place(relx = 0.01, rely = 0.01)
         
         def pokemonHide():
-            pokemonButton.place_forget()
+            #pokemonButton.place_forget()
             pokemonBlueButton.place_forget()
             pokemonGreenButton.place_forget()
             pokemonRedButton.place_forget()
@@ -445,6 +443,7 @@ if True: # Game Boy Emulator
         def otherShow():
             pokemonButton.place_forget()
             otherButton.place_forget()
+            backButton.place_forget()
             backgameButton.place(relx = 0.01, rely = 0.01)
             zeldalinksawakeningButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
             tetrisButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
@@ -460,7 +459,7 @@ if True: # Game Boy Emulator
             tamagotchiButton.place(relx = 0.7525, rely = 0.595, relwidth = buttonWidth, relheight = buttonHeight)
         
         def otherhide():
-            otherButton.place_forget()
+            #otherButton.place_forget()
             zeldalinksawakeningButton.place_forget()
             tetrisButton.place_forget()
             donkeykongButton.place_forget()
@@ -481,8 +480,8 @@ if True: # Home Screen
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
     equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
 
-    button3 = tk.Button(frame, text="button3", bg=mColour, font="60",command=lambda:button3())
-    button3.place(relx = 0.505, rely = 0.01, relwidth=buttonWidth, relheight=buttonHeight)
+    binaryConversionButton = tk.Button(frame, text="Binary Conversion", bg=mColour, font="60",command=lambda: button("binaryconversion"))
+    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth=buttonWidth, relheight=buttonHeight)
 
     button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
     button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
