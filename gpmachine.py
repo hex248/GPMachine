@@ -55,11 +55,7 @@ def button(value):
     trigonometryButton.place_forget()
     equationButton.place_forget()
     binaryConversionButton.place_forget()
-    button4.place_forget()
-    button5.place_forget()
-    button6.place_forget()
-    button7.place_forget()
-    button8.place_forget()
+    animeButton.place_forget()
     gameboyEmulatorButton.place_forget()
 
     if value == "back":
@@ -70,20 +66,18 @@ def button(value):
         equations()
     if value == "gbemu":
         gbemu()
+    if value == "binaryconversion":
+        binaryShow()
 
 def back():
     backButton.place_forget()
     hideTrig()
     hideEquations()
     hideGbemu()
-    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
-    equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
-    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
-    button4.place(relx = 0.7525, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
-    button5.place(relx = 0.01, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-    button6.place(relx = 0.2575, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-    button7.place(relx = 0.505, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-    button8.place(relx = 0.7525, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+    equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
+    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+    animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
     gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
 
 def backgame():
@@ -98,15 +92,19 @@ def Reset():
         trigEntryB.delete(0, tk.END)
         trigEntryC.delete(0, tk.END)
         trigEntryθ.delete(0, tk.END)
-        thermalEnergyChangeEntry(0, tk.END)
-        thermalEnergyEntry(0, tk.END)
-        thermalEnergyMassEntry(0, tk.END)
-        thermalEnergyHeatCapacityEntry(0, tk.END)
-        thermalEnergyTemperatureChangeEntry(0, tk.END)
-        kineticEnergyEntry(0, tk.END)
-        kineticEnergyMassEntry(0, tk.END)
-        kineticEnergyVelocityEntry(0, tk.END)
+        thermalEnergyChangeEntry.delete(0, tk.END)
+        thermalEnergyEntry.delete(0, tk.END)
+        thermalEnergyMassEntry.delete(0, tk.END)
+        thermalEnergyHeatCapacityEntry.delete(0, tk.END)
+        thermalEnergyTemperatureChangeEntry.delete(0, tk.END)
+        kineticEnergyEntry.delete(0, tk.END)
+        kineticEnergyMassEntry.delete(0, tk.END)
+        kineticEnergyVelocityEntry.delete(0, tk.END)
         trigErrorLabel.place_forget()
+        decimalEntry.delete(0, tk.END)
+        binaryEntry.delete(0, tk.END)
+        conversionErrorLabel.place_forget()
+
 
 if True: # Trigonometry
 
@@ -236,6 +234,7 @@ if True: # Equations
         hideKineticEnergy()
         equations()
         backscienceButton.place_forget()
+        backButton.place(relx = 0.01, rely = 0.01)
 
     def equations():
         equationsTitle.place(y = 10, x = 250, anchor = "n")
@@ -358,6 +357,43 @@ if True: # Equations
             kineticEnergyEntry.delete(0, tk.END)
             kineticEnergyEntry.insert(0, str((mass / 2) * velocity ** 2))
 
+if True: # Binary Conversion
+
+    if True: # Binary Conversion elements
+        decimalLabel = tk.Label(font = '60', text = 'Decimal/Denary', fg = 'black', bg = 'grey')
+        binaryLabel = tk.Label(font = '60', text = 'Binary', fg = 'black', bg = 'grey')
+        conversionErrorLabel = tk.Label(font = '50, 100', text = 'ERROR', fg = 'red', bg = 'grey')
+        decimalEntry = tk.Entry(font = '60')
+        binaryEntry = tk.Entry(font = '60')
+
+    def binaryShow():
+        decimalLabel.place(rely = 0.2, relx = 0.35, anchor = 'e')
+        binaryLabel.place(rely = 0.24, relx = 0.35, anchor = 'e')
+        decimalEntry.place(rely = 0.2, relx = 0.36, relwidth = 0.24, relheight = 0.04, anchor = 'w')
+        binaryEntry.place(rely = 0.24, relx = 0.36, relwidth = 0.24, relheight = 0.04, anchor = 'w')
+        ResetButton.place(rely = 0.41, relx = 0.48, relwidth = 0.16, relheight = 0.08, anchor = 'n')
+        binaryCalculateButton.place(rely = 0.32, relx = 0.48, relwidth = 0.16, relheight = 0.08, anchor = 'n')
+
+    def binaryCalculate():
+        conversionErrorLabel.place_forget()
+        decimal = decimalEntry.get()
+        if decimal:
+            decimal = int(decimal)
+        binary = binaryEntry.get()
+        if decimal:
+            binaryEntry.delete(0, tk.END)
+            binaryEntry.insert(0, str(bin(decimal)[2:]))
+        elif binary:
+            decimal = 0
+            for digit in binary:
+                decimal = decimal*2 + int(digit)
+            decimalEntry.delete(0, tk.END)
+            decimalEntry.insert(0, str(decimal))
+        else:
+            conversionErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
+
+
+
 if True: # Game Boy Emulator
 
     def gbemu():
@@ -475,28 +511,16 @@ if True: # Game Boy Emulator
 
 if True: # Home Screen
     trigonometryButton = tk.Button(frame, text="Trigonometry", bg="grey", font="60", command=lambda: button("trigonometry"), image=trigImageBig)
-    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
 
     equationButton = tk.Button(frame, text="Science Equations", bg=mColour, font="60", command=lambda: button("equation"), justify = 'center', wraplength = '80')
-    equationButton.place(relx = 0.2575, rely = 0.01, relwidth = buttonWidth, relheight = buttonHeight)
+    equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
 
     binaryConversionButton = tk.Button(frame, text="Binary Conversion", bg=mColour, font="60",command=lambda: button("binaryconversion"))
-    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth=buttonWidth, relheight=buttonHeight)
+    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth=0.485, relheight=buttonHeight)
 
-    button4 = tk.Button(frame, text="button4", bg=mColour, font="60", command=lambda: button("button4"))
-    button4.place(relx = 0.7525, rely = 0.01, relwidth = 0.2375, relheight = 0.2375)
-
-    button5 = tk.Button(frame, text="button5", bg=mColour, font="60", command=lambda: button("button5"))
-    button5.place(relx = 0.01, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-
-    button6 = tk.Button(frame, text="button6", bg=mColour, font="60", command=lambda: button("button6"))
-    button6.place(relx = 0.2575, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-
-    button7 = tk.Button(frame, text="button7", bg=mColour, font="60", command=lambda: button("button7"))
-    button7.place(relx = 0.505, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
-
-    button8 = tk.Button(frame, text="button8", bg=mColour, font="60", command=lambda: button("button8"))
-    button8.place(relx = 0.7525, rely = 0.2575, relwidth = buttonWidth, relheight = buttonHeight)
+    animeButton = tk.Button(frame, text="Anime", bg=mColour, font="60", command=lambda: button("anime"))
+    animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
 
     gameboyEmulatorButton = tk.Button(frame, text="GameBoy Emulator", bg="grey", font="60, 50", command=lambda: button("gbemu"), justify = 'center', wraplength = '490', image=gbImage)
     gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
@@ -517,6 +541,9 @@ if True: ### Internal Buttons
     if True: # Trig Buttons
         trigCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: trigCalculate())
         ResetButton = tk.Button(root, text="Reset", bg=bColour, font="60", command=lambda: Reset())
+
+    if True: # Binary Conversion Buttons
+        binaryCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: binaryCalculate())
 
     if True: # Emulator Buttons
         if True: # Pokémon
