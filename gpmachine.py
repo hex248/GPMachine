@@ -73,6 +73,7 @@ def back():
     backButton.place_forget()
     hideTrig()
     hideEquations()
+    hideBinary()
     hideGbemu()
     trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
     equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
@@ -373,6 +374,14 @@ if True: # Binary Conversion
         binaryEntry.place(rely = 0.24, relx = 0.36, relwidth = 0.24, relheight = 0.04, anchor = 'w')
         ResetButton.place(rely = 0.41, relx = 0.48, relwidth = 0.16, relheight = 0.08, anchor = 'n')
         binaryCalculateButton.place(rely = 0.32, relx = 0.48, relwidth = 0.16, relheight = 0.08, anchor = 'n')
+
+    def hideBinary():
+        decimalLabel.place_forget()
+        binaryLabel.place_forget()
+        decimalEntry.place_forget()
+        binaryEntry.place_forget()
+        ResetButton.place_forget()
+        binaryCalculateButton.place_forget()
 
     def binaryCalculate():
         conversionErrorLabel.place_forget()
