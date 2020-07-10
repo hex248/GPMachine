@@ -438,17 +438,19 @@ if True: # Anime Button
 
     def Websitebutton(value):
         if value == ("gogo"):
-            webbrowser.open("https://www19.gogoanime.io/")
+            webbrowser.open("https://www.gogoanime.io/")
         if value == ("kissanime"):
             webbrowser.open("https://kissanime.ru/")
         if value == ("ultima"):
-            webbrowser.open("https://www1.animeultima.to/")
+            webbrowser.open("https://www.animeultima.to/")
         if value == ("animetwist"):
             webbrowser.open("https://twist.moe/")
         if value == ("aniwatch"):
             webbrowser.open("https://aniwatch.me/home")
         if value == ("mal"):
             webbrowser.open("https://myanimelist.net/")
+
+    
 
 if True: # Game Boy Emulator
 
