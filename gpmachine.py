@@ -153,7 +153,7 @@ if True: # Trigonometry
         if θ:
             θ = float(θ)
         
-        if θ >= 90:
+        if θ >= 90 and θ:
             trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
         if a and b:
             trigEntryC.delete(0, tk.END)
