@@ -152,9 +152,8 @@ if True: # Trigonometry
         θ = trigEntryθ.get()
         if θ:
             θ = float(θ)
-        
-        if θ >= 90:
-            trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
+            if θ >= 90:
+                trigErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
         if a and b:
             trigEntryC.delete(0, tk.END)
             trigEntryC.insert(0, str(math.hypot(a, b)))
@@ -401,8 +400,6 @@ if True: # Binary Conversion
         else:
             conversionErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
 
-
-
 if True: # Game Boy Emulator
 
     def gbemu():
@@ -474,7 +471,6 @@ if True: # Game Boy Emulator
             backgameButton.place(relx = 0.01, rely = 0.01)
         
         def pokemonHide():
-            #pokemonButton.place_forget()
             pokemonBlueButton.place_forget()
             pokemonGreenButton.place_forget()
             pokemonRedButton.place_forget()
