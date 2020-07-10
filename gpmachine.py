@@ -4,7 +4,7 @@ if True: # Imports and global variables
     import math
     import time
     import random
-    #from decimaltohex import decimalToHex
+    import webbrowser
     from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
@@ -68,25 +68,37 @@ def button(value):
         gbemu()
     if value == "binaryconversion":
         binaryShow()
+    if value == "anime":
+        animeShow()
 
-def back():
-    backButton.place_forget()
-    hideTrig()
-    hideEquations()
-    hideBinary()
-    hideGbemu()
-    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
-    equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
-    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
-    animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
-    gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
+if True: # Back Buttons
 
-def backgame():
-    pokemonHide()
-    otherhide()
-    gbemu()
-    backgameButton.place_forget()
-    button("")
+    def back():
+        backButton.place_forget()
+        hideTrig()
+        hideEquations()
+        hideBinary()
+        hideAnime()
+        hideGbemu()
+        trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+        equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
+        binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+        animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
+        gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
+
+    def backgame():
+        pokemonHide()
+        otherhide()
+        gbemu()
+        backgameButton.place_forget()
+        button("")
+
+    def backAnime():
+        hideWebsite()
+        animeShow()
+        button("")
+        backAnimeButton.place_forget()
+        backButton.place(relx = 0.01, rely = 0.01)
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -400,6 +412,44 @@ if True: # Binary Conversion
         else:
             conversionErrorLabel.place(rely = 0.6, relx = 0.5, relwidth = 490, relheight = 200, anchor = 'n')
 
+if True: # Anime Button
+
+    def animeShow():
+        websitebutton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+
+    def hideAnime():
+        websitebutton.place_forget()
+
+    def WebsiteShow():
+        backButton.place_forget()
+        backAnimeButton.place(relx = 0.01, rely = 0.01)
+        gogoButton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+        kissanimeButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+        animeultimaButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+        animetwistButton.place(relx = 0.7525, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+        animelistButton.place(relx = 0.01, rely = 0.3575, relwidth = buttonWidth, relheight = buttonHeight)
+    
+    def hideWebsite():
+        gogoButton.place_forget()
+        kissanimeButton.place_forget()
+        animeultimaButton.place_forget()
+        animetwistButton.place_forget()
+        animelistButton.place_forget()
+
+    def Websitebutton(value):
+        if value == ("gogo"):
+            webbrowser.open("https://www19.gogoanime.io/")
+        if value == ("kissanime"):
+            webbrowser.open("https://kissanime.ru/")
+        if value == ("ultima"):
+            webbrowser.open("https://www1.animeultima.to/")
+        if value == ("animetwist"):
+            webbrowser.open("https://twist.moe/")
+        if value == ("aniwatch"):
+            webbrowser.open("https://aniwatch.me/home")
+        if value == ("mal"):
+            webbrowser.open("https://myanimelist.net/")
+
 if True: # Game Boy Emulator
 
     def gbemu():
@@ -536,6 +586,7 @@ if True: ### Internal Buttons
             backButton = tk.Button(root, text="Back", bg="red", font="60", command=lambda: button("back"))
             backgameButton = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: backgame())
             backscienceButton = tk.Button(frame, text="Back", bg="red", font="60", command=lambda: backscience())
+            backAnimeButton = tk.Button(root, text="Back", bg="red", font="60", command=lambda: backAnime())
     
     if True: # Equation Buttons
         thermalEnergyButton = tk.Button(root, text="Change in thermal energy", bg=mColour, font="60", command=lambda: thermalEnergy())
@@ -549,6 +600,16 @@ if True: ### Internal Buttons
 
     if True: # Binary Conversion Buttons
         binaryCalculateButton = tk.Button(root, text="Calculate", bg=mColour, font="60", command=lambda: binaryCalculate())
+
+    if True: # Anime Buttons
+        websitebutton = tk.Button(root, text = "Websites", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: WebsiteShow())
+
+        gogoButton = tk.Button(root, text = "GOGO ANiME", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("gogo"))
+        kissanimeButton = tk.Button(root, text = "Kiss Anime", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("kissanime"))
+        animeultimaButton = tk.Button(root, text = "AnimeUltima", font="60, 20", bg = "grey", justify = "center", wraplength = '90', command=lambda: Websitebutton("ultima"))
+        animetwistButton = tk.Button(root, text = "Anime Twist", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("animetwist"))
+        aniwatchButton = tk.Button(root, text = "Ani Watch", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("aniwatch"))
+        animelistButton = tk.Button(root, text = "My Anime List", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("mal"))
 
     if True: # Emulator Buttons
         if True: # Pokémon
