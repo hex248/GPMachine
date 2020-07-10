@@ -72,32 +72,34 @@ def button(value):
     if value == "anime":
         animeShow()
 
-def back():
-    backButton.place_forget()
-    hideTrig()
-    hideEquations()
-    hideBinary()
-    hideAnime()
-    hideGbemu()
-    trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
-    equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
-    binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
-    animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
-    gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
+if True: # Back Buttons
 
-def backgame():
-    pokemonHide()
-    otherhide()
-    gbemu()
-    backgameButton.place_forget()
-    button("")
+    def back():
+        backButton.place_forget()
+        hideTrig()
+        hideEquations()
+        hideBinary()
+        hideAnime()
+        hideGbemu()
+        trigonometryButton.place(relx = 0.01, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+        equationButton.place(relx = 0.01, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
+        binaryConversionButton.place(relx = 0.505, rely = 0.01, relwidth = 0.485, relheight = buttonHeight)
+        animeButton.place(relx = 0.505, rely = 0.2575, relwidth = 0.485, relheight = buttonHeight)
+        gameboyEmulatorButton.place(relx = 0.01, rely = 0.505, relwidth = emuButtonWidth, relheight = emuButtonHeight)
 
-def backAnime():
-    hideWebsite()
-    animeShow()
-    button("")
-    backAnimeButton.place_forget()
-    backButton.place(relx = 0.01, rely = 0.01)
+    def backgame():
+        pokemonHide()
+        otherhide()
+        gbemu()
+        backgameButton.place_forget()
+        button("")
+
+    def backAnime():
+        hideWebsite()
+        animeShow()
+        button("")
+        backAnimeButton.place_forget()
+        backButton.place(relx = 0.01, rely = 0.01)
 
 def Reset():
         trigEntryA.delete(0, tk.END)
@@ -449,10 +451,6 @@ if True: # Anime Button
             webbrowser.open("https://aniwatch.me/home")
         if value == ("mal"):
             webbrowser.open("https://myanimelist.net/")
-        
-
-
-
 
 if True: # Game Boy Emulator
 
