@@ -70,6 +70,7 @@ def button(value):
         binaryShow()
     if value == "anime":
         animeShow()
+        
 
 if True: # Back Buttons
 
@@ -95,6 +96,7 @@ if True: # Back Buttons
 
     def backAnime():
         hideWebsite()
+        airHide()
         animeShow()
         button("")
         backAnimeButton.place_forget()
@@ -416,9 +418,11 @@ if True: # Anime Button
 
     def animeShow():
         websitebutton.place(relx = 0.01, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
+        animecurrentlyButton.place(relx = 0.2575, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
 
     def hideAnime():
         websitebutton.place_forget()
+        animecurrentlyButton.place_forget()
 
     def WebsiteShow():
         backButton.place_forget()
@@ -428,6 +432,7 @@ if True: # Anime Button
         animeultimaButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
         animetwistButton.place(relx = 0.7525, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
         animelistButton.place(relx = 0.01, rely = 0.3575, relwidth = buttonWidth, relheight = buttonHeight)
+        animecurrentlyButton.place_forget()
     
     def hideWebsite():
         gogoButton.place_forget()
@@ -449,7 +454,16 @@ if True: # Anime Button
             webbrowser.open("https://aniwatch.me/home")
         if value == ("mal"):
             webbrowser.open("https://myanimelist.net/")
+    
+    def airShow():
+        backButton.place_forget()
+        backAnimeButton.place(relx = 0.01, rely = 0.01)
+        websitebutton.place_forget()
+        animecurrentlyButton.place_forget()
+        animecurrentlyLabel.place(relx = 0.1, rely = 0.1)
 
+    def airHide():
+        animecurrentlyLabel.place_forget()
 if True: # Game Boy Emulator
 
     def gbemu():
@@ -610,6 +624,12 @@ if True: ### Internal Buttons
         animetwistButton = tk.Button(root, text = "Anime Twist", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("animetwist"))
         aniwatchButton = tk.Button(root, text = "Ani Watch", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("aniwatch"))
         animelistButton = tk.Button(root, text = "My Anime List", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("mal"))
+
+        animecurrentlyButton = tk.Button(root, text = "Currently Airing", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: airShow())
+        animecurrentlyLabel = tk.Label(font = ("Arial", "30"), text = "Lable", fg = "black", bg = "grey")
+
+
+
 
     if True: # Emulator Buttons
         if True: # Pokémon
