@@ -462,13 +462,8 @@ if True: # Anime Button
         animecurrentlyButton.place_forget()
         animecurrentlyLabel.place(relx = 0.1, rely = 0.1)
 
-<<<<<<< HEAD
-    
-
-=======
     def airHide():
         animecurrentlyLabel.place_forget()
->>>>>>> f813700ee9a2d93690249a5f55e52020a8dd9774
 if True: # Game Boy Emulator
 
     def gbemu():
