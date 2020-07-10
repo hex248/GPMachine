@@ -5,7 +5,6 @@ if True: # Imports and global variables
     import time
     import random
     import webbrowser
-    #from decimaltohex import decimalToHex
     from tkinter import messagebox
     from pyboy import PyBoy
     root = tk.Tk()
@@ -522,7 +521,6 @@ if True: # Game Boy Emulator
             backgameButton.place(relx = 0.01, rely = 0.01)
         
         def pokemonHide():
-            #pokemonButton.place_forget()
             pokemonBlueButton.place_forget()
             pokemonGreenButton.place_forget()
             pokemonRedButton.place_forget()
