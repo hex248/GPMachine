@@ -7,6 +7,7 @@ if True: # Imports and global variables
     import webbrowser
     from tkinter import messagebox
     from pyboy import PyBoy
+    from tkinter import simpledialog
     root = tk.Tk()
     canvasWidth = 500
     canvasHeight = 500
@@ -428,6 +429,7 @@ if True: # Anime Button
         animeultimaButton.place(relx = 0.505, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
         animetwistButton.place(relx = 0.7525, rely = 0.1, relwidth = buttonWidth, relheight = buttonHeight)
         animelistButton.place(relx = 0.01, rely = 0.3575, relwidth = buttonWidth, relheight = buttonHeight)
+        animelistPersonalButton.place(relx = 0.2575, rely = 0.3575, relwidth = buttonWidth, relheight = buttonHeight)
     
     def hideWebsite():
         gogoButton.place_forget()
@@ -435,20 +437,25 @@ if True: # Anime Button
         animeultimaButton.place_forget()
         animetwistButton.place_forget()
         animelistButton.place_forget()
+        animelistPersonalButton.place_forget()
 
     def Websitebutton(value):
         if value == ("gogo"):
-            webbrowser.open("https://www19.gogoanime.io/")
+            webbrowser.open("https://www.gogoanime.io/")
         if value == ("kissanime"):
             webbrowser.open("https://kissanime.ru/")
         if value == ("ultima"):
-            webbrowser.open("https://www1.animeultima.to/")
+            webbrowser.open("https://www.animeultima.to/")
         if value == ("animetwist"):
             webbrowser.open("https://twist.moe/")
         if value == ("aniwatch"):
             webbrowser.open("https://aniwatch.me/home")
         if value == ("mal"):
             webbrowser.open("https://myanimelist.net/")
+        if value == ("malpersonal"):
+            MALusername= simpledialog.askstring("input string", "my anime list username")
+            webbrowser.open("https://myanimelist.net/animelist/" + MALusername)
+
 
 if True: # Game Boy Emulator
 
@@ -610,6 +617,7 @@ if True: ### Internal Buttons
         animetwistButton = tk.Button(root, text = "Anime Twist", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("animetwist"))
         aniwatchButton = tk.Button(root, text = "Ani Watch", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("aniwatch"))
         animelistButton = tk.Button(root, text = "My Anime List", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("mal"))
+        animelistPersonalButton = tk.Button(root, text = "My Anime List With Name", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("malpersonal"))
 
     if True: # Emulator Buttons
         if True: # Pokémon
