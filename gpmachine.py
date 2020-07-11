@@ -8,6 +8,9 @@ if True: # Imports and global variables
     from tkinter import messagebox
     from pyboy import PyBoy
     from tkinter import simpledialog
+    from bs4 import BeautifulSoup as soup
+    from urllib.request import urlopen as uReq
+    seasonal_url = "https://myanimelist.net/anime/season"
     root = tk.Tk()
     canvasWidth = 500
     canvasHeight = 500
@@ -461,16 +464,17 @@ if True: # Anime Button
         if value == ("malpersonal"):
             MALusername= simpledialog.askstring("input string", "my anime list username")
             webbrowser.open("https://myanimelist.net/animelist/" + MALusername)
-    
+
     def airShow():
         backButton.place_forget()
         backAnimeButton.place(relx = 0.01, rely = 0.01)
         websitebutton.place_forget()
         animecurrentlyButton.place_forget()
-        animecurrentlyLabel.place(relx = 0.1, rely = 0.1)
+        animecurrentlyLabel.place(relx = 0.12, rely = 0.015)
 
     def airHide():
         animecurrentlyLabel.place_forget()
+
 if True: # Game Boy Emulator
 
     def gbemu():
@@ -634,10 +638,20 @@ if True: ### Internal Buttons
         animelistPersonalButton = tk.Button(root, text = "My Anime List With Name", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("malpersonal"))
 
         animecurrentlyButton = tk.Button(root, text = "Currently Airing", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: airShow())
-        animecurrentlyLabel = tk.Label(font = ("Arial", "30"), text = "Lable", fg = "black", bg = "grey")
+        uClient = uReq(seasonal_url)
+        seasonal_html = uClient.read()
+        uClient.close()
+        seasonal_soup = soup(seasonal_html, "html.parser")
+        seasonalAnime = seasonal_soup.findAll("div", {"class":"seasonal-anime js-seasonal-anime"})
+        seasonalList = []
+        for anime in seasonalAnime:
+            animeTitle = anime.findAll("a",{"class":"link-title"})
+            anime_name = animeTitle[0].text.strip()
+            seasonalList.append(anime_name)
+        seasonalListString = "\n\n".join(seasonalList[0:10])
+        print(seasonalListString)
 
-
-
+        animecurrentlyLabel = tk.Label(root, font = ("Calibri", 13), text = seasonalListString, anchor = 'w', justify = 'left', fg = "black", bg = "grey", wraplength = 430)
 
     if True: # Emulator Buttons
         if True: # Pokémon
