@@ -462,7 +462,7 @@ if True: # Anime Button
         if value == ("mal"):
             webbrowser.open("https://myanimelist.net/")
         if value == ("malpersonal"):
-            MALusername= simpledialog.askstring("input string", "my anime list username")
+            MALusername= simpledialog.askstring("input mal name", "my anime list username")
             webbrowser.open("https://myanimelist.net/animelist/" + MALusername)
 
     def airShow():
