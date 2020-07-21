@@ -3,6 +3,7 @@ if True: # Imports and global variables
     import os
     import math
     import time
+    start = time.perf_counter()
     import random
     import webbrowser
     from tkinter import messagebox
@@ -649,7 +650,6 @@ if True: ### Internal Buttons
             anime_name = animeTitle[0].text.strip()
             seasonalList.append(anime_name)
         seasonalListString = "\n\n".join(seasonalList[0:10])
-        print(seasonalListString)
 
         animecurrentlyLabel = tk.Label(root, font = ("Calibri", 13), text = seasonalListString, anchor = 'w', justify = 'left', fg = "black", bg = "grey", wraplength = 430)
 
@@ -679,5 +679,9 @@ if True: ### Internal Buttons
             marioland4Button = tk.Button(root, text = "Super Mario Land 4", font="60, 20", bg = "grey", command=lambda: game("mario4"), justify = "center", wraplength = '118.75', image=supermario4Image)
             simpsonsButton = tk.Button(root, text = "Simpons", font="60, 20", bg = "grey", command=lambda: game("simpsons"), justify = "center", wraplength = '118.75', image=simpsonsImage)
             tamagotchiButton = tk.Button(root, text = "Tamagotchi", font="60, 20", bg = "grey", command=lambda: game("tamagotchi"), justify = "center", wraplength = '118.75', image=tamagotchiImage)
+
+finish = time.perf_counter()
+
+print(f'Finished in {round(finish-start, 1)} seconds(s)')
 
 root.mainloop()
