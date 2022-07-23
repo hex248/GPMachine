@@ -30,4 +30,4 @@ A general pupose program built to fulfill random needs.\
 ### More Soon!
 
 > Built with Python.\
-> Developed by [hex](https://twitter.com/hexyuu) and [t4t45](http://tommypriest.com).
+> Developed by [hex](https://github.com/hex248) and [t4t45](http://github.com/t4t45).
