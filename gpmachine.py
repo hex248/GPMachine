@@ -1,3 +1,6 @@
+import requests
+
+
 if True: # Imports and global variables
     import tkinter as tk
     import os
@@ -639,11 +642,10 @@ if True: ### Internal Buttons
         animelistPersonalButton = tk.Button(root, text = "My Anime List With Name", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: Websitebutton("malpersonal"))
 
         animecurrentlyButton = tk.Button(root, text = "Currently Airing", font="60, 20", bg = "grey", justify = "center", wraplength = '118.75', command=lambda: airShow())
-        uClient = uReq(seasonal_url)
-        seasonal_html = uClient.read()
-        uClient.close()
-        seasonal_soup = soup(seasonal_html, "html.parser")
-        seasonalAnime = seasonal_soup.findAll("div", {"class":"seasonal-anime js-seasonal-anime"})
+        
+        res = requests.get(seasonal_url, headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" })
+        seasonal_soup = soup(res.content, "html.parser")
+        seasonalAnime = seasonal_soup.findAll("div", {"class":"seasonal-anime"})
         seasonalList = []
         for anime in seasonalAnime:
             animeTitle = anime.findAll("a",{"class":"link-title"})
